@@ -9,7 +9,7 @@ extra_css:
 
 markdown_extensions:
   # Tooltips
-  - abbr
+  - abbr 
   # Admonitions
   - admonition
   # Annotations, Buttons, Grids, Icons & Emojis, Images, Tooltips
