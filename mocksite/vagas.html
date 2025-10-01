@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas Abertas - Gestão de Monitoria Ibmec</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="ibmec.html" class="logo">
+                <img src="https://www.ibmec.br/wp-content/themes/ibmec/images/logo-ibmec.svg" alt="Logo Ibmec">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="o-sistema.html">O Sistema</a></li>
+                    <li><a href="vagas.html">Vagas Abertas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="painel-gestao.html">Painel de Gestão</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-primary">Login</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1>Vagas de Monitoria Abertas</h1>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="filter-bar">
+                    <input type="text" placeholder="Buscar por disciplina ou professor...">
+                    <select>
+                        <option value="">Todos os Departamentos</option>
+                        <option value="economia">Economia</option>
+                        <option value="direito">Direito</option>
+                        <option value="engenharia">Engenharia</option>
+                    </select>
+                    <button class="btn-primary">Buscar</button>
+                </div>
+
+                <div class="vagas-grid">
+                    <article class="vaga-card">
+                        <div class="vaga-header">
+                            <h3>Cálculo I</h3>
+                            <span class="vaga-tag">Engenharia</span>
+                        </div>
+                        <p><strong>Professor:</strong> Dr. Ricardo Almeida</p>
+                        <p><strong>Vagas:</strong> 3</p>
+                        <p><strong>Pré-requisitos:</strong> Ter sido aprovado em Cálculo I com nota mínima 8.0.</p>
+                        <a href="#" class="btn-secondary">[ VER DETALHES ]</a>
+                    </article>
+                    
+                    <article class="vaga-card">
+                        <div class="vaga-header">
+                            <h3>Microeconomia II</h3>
+                            <span class="vaga-tag">Economia</span>
+                        </div>
+                        <p><strong>Professor:</strong> Dra. Ana Costa</p>
+                        <p><strong>Vagas:</strong> 2</p>
+                        <p><strong>Pré-requisitos:</strong> Aprovado em Microeconomia I e II, boa comunicação.</p>
+                        <a href="#" class="btn-secondary">[ VER DETALHES ]</a>
+                    </article>
+
+                    <article class="vaga-card">
+                        <div class="vaga-header">
+                            <h3>Direito Constitucional</h3>
+                            <span class="vaga-tag">Direito</span>
+                        </div>
+                        <p><strong>Professor:</strong> Dr. Marcos Pereira</p>
+                        <p><strong>Vagas:</strong> 1</p>
+                        <p><strong>Pré-requisitos:</strong> Nota acima de 8.5 na disciplina, proatividade.</p>
+                        <a href="#" class="btn-secondary">[ VER DETALHES ]</a>
+                    </article>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Ibmec. Todos os direitos reservados. Este é um site modelo.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

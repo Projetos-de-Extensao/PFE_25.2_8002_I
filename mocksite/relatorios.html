@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Gestão de Monitoria Ibmec</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="ibmec.html" class="logo">
+                <img src="https://www.ibmec.br/wp-content/themes/ibmec/images/logo-ibmec.svg" alt="Logo Ibmec">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="o-sistema.html">O Sistema</a></li>
+                    <li><a href="vagas.html">Vagas Abertas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="painel-gestao.html">Painel de Gestão</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-primary">Login</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1>Geração de Relatórios</h1>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="form-card">
+                    <h2>Selecione os Parâmetros do Relatório</h2>
+                    <form class="report-form">
+                        <div class="form-group">
+                            <label for="report-type">Tipo de Relatório</label>
+                            <select id="report-type" name="report-type">
+                                <option>Lista de candidatos por vaga</option>
+                                <option>Monitores selecionados por disciplina</option>
+                                <option>Monitores selecionados por departamento</option>
+                                <option>Registro de horas por monitor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Departamento</label>
+                            <select id="department" name="department">
+                                <option>Todos</option>
+                                <option>Economia</option>
+                                <option>Direito</option>
+                                <option>Engenharia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="start-date">Data de Início</label>
+                            <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="end-date">Data Final</label>
+                            <input type="date" id="end-date" name="end-date">
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Gerar Relatório</button>
+                    </form>
+                </div>
+                
+                <div class="report-results">
+                    <h3>Resultado</h3>
+                    <p>O relatório gerado aparecerá aqui.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Ibmec. Todos os direitos reservados. Este é um site modelo.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
