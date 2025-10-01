@@ -23,7 +23,7 @@ jobs:
       # 3. Instala as dependências (MkDocs e plugins)
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material mkdocs-minify-plugin
+          pip install mkdocs mkdocs-material mkdocs-minify-plugin pymdown-extensions
 
       # 4. Executa o build do site
       - name: Build site
