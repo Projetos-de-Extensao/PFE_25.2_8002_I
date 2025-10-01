@@ -22,6 +22,8 @@ Após as fases de pesquisa e ideação, a equipe utilizou o **Google Gemini** pa
 
 Estrutura básica com campos para e-mail, senha и botão de login.
 
+![alt text](image.png)
+
 ### Tela Cadastro 1
 
 Formulário para informações pessoais do aluno (nome, e-mail, senha, curso).
