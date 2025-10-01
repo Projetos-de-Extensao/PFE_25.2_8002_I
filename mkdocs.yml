@@ -82,7 +82,7 @@ theme:
     code: Roboto Mono
   icon:
     repo: fontawesome/brands/github
-    logo: simple/React
+    logo: simple/react
     favicon: simple/react
   name: material
   palette:
