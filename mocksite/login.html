@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Plataforma de Monitoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <form id="login-form" class="form-card">
+            <h2>Plataforma de Monitoria</h2>
+            <p>Entre com seus dados de acesso.</p>
+            
+            <div class="input-group">
+                <label for="email">E-mail Institucional</label>
+                <input type="email" id="email" placeholder="ex: ana.silva@aluno.ibmec.br" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            
+            <div class="form-links">
+                <a href="#" id="show-cadastro">Criar conta</a>
+                <a href="#" id="show-esqueci">Esqueci minha senha</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="modal-cadastro" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-cadastro">&times;</span>
+            <form id="cadastro-form">
+                <h2>Criar Conta</h2>
+                <p>Preencha seus dados para se cadastrar.</p>
+                <div class="input-group">
+                    <label for="reg-nome">Nome Completo</label>
+                    <input type="text" id="reg-nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-email">E-mail Institucional</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-matricula">Matrícula</label>
+                    <input type="text" id="reg-matricula" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-curso">Curso</label>
+                    <input type="text" id="reg-curso" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-senha">Criar Senha</label>
+                    <input type="password" id="reg-senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-esqueci" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-esqueci">&times;</span>
+            <form id="esqueci-form">
+                <h2>Recuperar Senha</h2>
+                <p>Enviaremos um link de recuperação para seu e-mail.</p>
+                <div class="input-group">
+                    <label for="rec-email">E-mail Institucional</label>
+                    <input type="email" id="rec-email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

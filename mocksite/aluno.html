@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Aluno | Monitoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Plataforma de Monitoria</h1>
+            <div class="user-info">
+                <span>Olá, Ana!</span>
+                <button id="logout-btn" class="btn btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="vagas">Vagas Abertas</a></li>
+                <li><a href="#" class="nav-link" data-page="candidaturas">Minhas Candidaturas</a></li>
+                <li><a href="#" class="nav-link" data-page="perfil">Meu Perfil</a></li>
+            </ul>
+        </nav>
+
+        <main id="content-area">
+            </main>
+    </div>
+
+    <div id="modal-detalhes-vaga" class="modal">
+        <div class="modal-content large">
+            <span class="close-btn" id="close-detalhes">&times;</span>
+            <div id="vaga-detalhes-content">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

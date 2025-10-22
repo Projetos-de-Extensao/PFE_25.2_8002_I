@@ -1,0 +1,359 @@
+/* --- GERAL E RESET --- */
+:root {
+    --cor-primaria: #004a91; /* Tom de azul Ibmec */
+    --cor-secundaria: #fdb913; /* Tom de amarelo Ibmec */
+    --cor-texto: #333;
+    --cor-fundo: #f4f7fa;
+    --cor-borda: #ddd;
+    --cor-branco: #ffffff;
+    --cor-preto: #000;
+    --cor-sucesso: #28a745;
+    --cor-rejeitado: #dc3545;
+    --cor-analise: #ffc107;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- LOGIN PAGE --- */
+.login-body {
+    background: linear-gradient(to right, var(--cor-primaria), #003a70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-card {
+    background: var(--cor-branco);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.form-card h2 {
+    text-align: center;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+.form-card p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.input-group-row {
+    display: flex;
+    gap: 20px;
+}
+.input-group-row .input-group {
+    flex: 1;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+.btn-primary:hover {
+    background-color: #003a70;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    color: var(--cor-branco);
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+.btn-full {
+    width: 100%;
+}
+.btn-success { background: var(--cor-sucesso); color: var(--cor-branco); }
+.btn-danger { background: var(--cor-rejeitado); color: var(--cor-branco); }
+
+.form-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.form-links a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- LAYOUT PAINÉIS (ALUNO / COORDENADOR) --- */
+.header {
+    background-color: var(--cor-branco);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 0 20px;
+}
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1 {
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.user-info span {
+    font-weight: 600;
+}
+
+.main-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 0 0 220px;
+    background: var(--cor-branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    align-self: flex-start;
+}
+.sidebar ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.sidebar li {
+    margin-bottom: 10px;
+}
+.sidebar a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--cor-texto);
+    border-radius: 5px;
+}
+.sidebar a:hover {
+    background-color: var(--cor-fundo);
+}
+.sidebar a.active {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-weight: 600;
+}
+
+#content-area {
+    flex: 1;
+}
+
+.content-section {
+    background: var(--cor-branco);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.content-section h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cor-fundo);
+    padding-bottom: 10px;
+}
+
+/* --- COMPONENTES (Vagas, Tabelas, Filtros) --- */
+.filtros-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+.filtros-container .input-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.vaga-card {
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+.vaga-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.vaga-card-info h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+}
+.vaga-card-info p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.tabela th, .tabela td {
+    border: 1px solid var(--cor-borda);
+    padding: 12px;
+    text-align: left;
+}
+.tabela th {
+    background-color: var(--cor-fundo);
+    font-weight: 600;
+}
+.tabela td .btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--cor-preto);
+}
+.status-analise { background-color: var(--cor-analise); }
+.status-aprovado { background-color: var(--cor-sucesso); color: var(--cor-branco); }
+.status-rejeitado { background-color: var(--cor-rejeitado); color: var(--cor-branco); }
+
+/* --- MODAIS --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+    background-color: var(--cor-branco);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+.modal-content.large { max-width: 800px; }
+.modal-content.x-large { max-width: 1000px; }
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-btn:hover { color: var(--cor-preto); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Detalhes da Vaga (Modal) */
+#vaga-detalhes-content h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+}
+#vaga-detalhes-content h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 5px;
+}
+#vaga-detalhes-content p {
+    margin-bottom: 10px;
+}
+
+/* Painel Coordenador */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.stat-card {
+    background: var(--cor-fundo);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--cor-borda);
+}
+.stat-card h3 {
+    font-size: 2.5rem;
+    color: var(--cor-primaria);
+    margin: 0;
+}
+.stat-card p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 600;
+}
