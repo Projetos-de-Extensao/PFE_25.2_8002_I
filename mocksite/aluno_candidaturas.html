@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Candidaturas | Painel do Aluno</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Plataforma de Monitoria</h1>
+            <div class="user-info">
+                <span>Olá, Bruno Norton!</span>
+                <a href="index.html" class="btn btn-secondary">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="aluno_vagas.html" class="nav-link">Vagas Abertas</a></li>
+                <li><a href="aluno_candidaturas.html" class="nav-link active">Minhas Candidaturas</a></li>
+                <li><a href="aluno_perfil.html" class="nav-link">Meu Perfil</a></li>
+            </ul>
+        </nav>
+
+        <main id="content-area">
+            <div class="content-section">
+                <h2>Minhas Candidaturas</h2>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Matéria</th>
+                            <th>Status da Candidatura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Programação de Computadores I</td>
+                            <td><span class="status status-aprovado">Aprovado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Geometria Analítica</td>
+                            <td><span class="status status-rejeitado">Rejeitado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Física I</td>
+                            <td><span class="status status-analise">Em Análise</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

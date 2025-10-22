@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Plataforma de Monitoria</title>
+    <title>Login do Aluno | Plataforma de Monitoria</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-body">
+<body id="page-login-aluno" class="login-body">
 
     <div class="login-container">
-        <form id="login-form" class="form-card">
-            <h2>Plataforma de Monitoria</h2>
-            <p>Entre com seus dados de acesso.</p>
+        <div class="logo">
+            <span class="logo-placeholder">Monitoria Ibmec</span>
+        </div>
+
+        <form id="login-aluno-form" class="form-card">
+            <h2>Login do Aluno</h2>
+            <p>Use seu e-mail institucional de aluno.</p>
             
             <div class="input-group">
                 <label for="email">E-mail Institucional</label>
-                <input type="email" id="email" placeholder="ex: ana.silva@aluno.ibmec.br" required>
+                <input type="email" id="email" placeholder="matricula@alunos.ibmec.edu.br" required>
             </div>
             
             <div class="input-group">
@@ -29,6 +33,9 @@
                 <a href="#" id="show-cadastro">Criar conta</a>
                 <a href="#" id="show-esqueci">Esqueci minha senha</a>
             </div>
+            <div class="form-links" style="margin-top: 15px; justify-content: center;">
+                <a href="index.html">? Voltar para seleção</a>
+            </div>
         </form>
     </div>
 
@@ -38,41 +45,22 @@
             <form id="cadastro-form">
                 <h2>Criar Conta</h2>
                 <p>Preencha seus dados para se cadastrar.</p>
-                <div class="input-group">
-                    <label for="reg-nome">Nome Completo</label>
-                    <input type="text" id="reg-nome" required>
-                </div>
-                <div class="input-group">
-                    <label for="reg-email">E-mail Institucional</label>
-                    <input type="email" id="reg-email" required>
-                </div>
-                <div class="input-group">
-                    <label for="reg-matricula">Matrícula</label>
-                    <input type="text" id="reg-matricula" required>
-                </div>
-                <div class="input-group">
-                    <label for="reg-curso">Curso</label>
-                    <input type="text" id="reg-curso" required>
-                </div>
-                <div class="input-group">
-                    <label for="reg-senha">Criar Senha</label>
-                    <input type="password" id="reg-senha" required>
-                </div>
+                <div class="input-group"><label>Nome Completo</label><input type="text" required></div>
+                <div class="input-group"><label>E-mail Institucional</label><input type="email" required></div>
+                <div class="input-group"><label>Matrícula</label><input type="text" required></div>
+                <div class="input-group"><label>Curso</label><input type="text" required></div>
+                <div class="input-group"><label>Criar Senha</label><input type="password" required></div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>
-
     <div id="modal-esqueci" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="close-esqueci">&times;</span>
             <form id="esqueci-form">
                 <h2>Recuperar Senha</h2>
                 <p>Enviaremos um link de recuperação para seu e-mail.</p>
-                <div class="input-group">
-                    <label for="rec-email">E-mail Institucional</label>
-                    <input type="email" id="rec-email" required>
-                </div>
+                <div class="input-group"><label>E-mail Institucional</label><input type="email" required></div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>

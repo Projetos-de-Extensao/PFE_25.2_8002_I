@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Coordenador | Monitoria</title>
+    <title>Dashboard | Painel do Coordenador</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             <h1>Gestão de Monitorias</h1>
             <div class="user-info">
                 <span>Olá, Prof. Carlos!</span>
-                <button id="logout-btn" class="btn btn-secondary">Sair</button>
+                <a href="index.html" class="btn btn-secondary">Sair</a>
             </div>
         </div>
     </header>
@@ -21,14 +21,31 @@
     <div class="container main-layout">
         <nav class="sidebar">
             <ul>
-                <li><a href="#" class="nav-link active" data-page="dashboard">Painel Principal</a></li>
-                <li><a href="#" class="nav-link" data-page="vagas-criadas">Vagas Criadas</a></li>
+                <li><a href="coord_dashboard.html" class="nav-link active">Painel Principal</a></li>
+                <li><a href="coord_vagas.html" class="nav-link">Vagas Criadas</a></li>
             </ul>
             <button id="show-criar-vaga" class="btn btn-primary btn-full">Criar Nova Vaga</button>
         </nav>
 
         <main id="content-area">
-            </main>
+            <div class="content-section">
+                <h2>Painel Principal</h2>
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <h3>3</h3>
+                        <p>Vagas Ativas</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>9</h3>
+                        <p>Total de Candidatos</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>8</h3>
+                        <p>Novos Candidatos (Hoje)</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <div id="modal-criar-vaga" class="modal">
@@ -36,7 +53,6 @@
             <span class="close-btn" id="close-criar-vaga">&times;</span>
             <form id="criar-vaga-form">
                 <h2>Publicar Nova Vaga de Monitoria</h2>
-                
                 <h4>Informações Básicas</h4>
                 <div class="input-group">
                     <label for="vaga-materia">Matéria</label>
@@ -46,7 +62,6 @@
                     <label for="vaga-professor">Professor Responsável</label>
                     <input type="text" id="vaga-professor" required>
                 </div>
-                
                 <h4>Detalhes e Requisitos</h4>
                  <div class="input-group">
                     <label for="vaga-requisitos">Pré-requisitos</label>
@@ -56,7 +71,6 @@
                     <label for="vaga-descricao">Descrição das Atividades</label>
                     <textarea id="vaga-descricao" rows="5"></textarea>
                 </div>
-
                 <h4>Configuração</h4>
                 <div class="input-group-row">
                     <div class="input-group">
@@ -68,7 +82,6 @@
                         <input type="date" id="vaga-prazo" required>
                     </div>
                 </div>
-                
                 <button type="submit" class="btn btn-primary">Publicar Vaga</button>
             </form>
         </div>

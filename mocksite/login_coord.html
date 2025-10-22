@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Coordenador | Plataforma de Monitoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="page-login-coord" class="login-body">
+
+    <div class="login-container">
+        <div class="logo">
+            <span class="logo-placeholder">Monitoria Ibmec</span>
+        </div>
+
+        <form id="login-coord-form" class="form-card">
+            <h2>Login do Coordenador</h2>
+            <p>Acesso restrito a coordenadores.</p>
+            
+            <div class="input-group">
+                <label for="email">E-mail Institucional</label>
+                <input type="email" id="email" placeholder="matricula@coordenadores.ibmec.edu.br" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            
+            <div class="form-links" style="justify-content: center;">
+                <a href="#" id="show-esqueci">Esqueci minha senha</a>
+            </div>
+            <div class="form-links" style="margin-top: 15px; justify-content: center;">
+                <a href="index.html">? Voltar para seleção</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="modal-esqueci" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-esqueci">&times;</span>
+            <form id="esqueci-form">
+                <h2>Recuperar Senha</h2>
+                <p>Enviaremos um link de recuperação para seu e-mail.</p>
+                <div class="input-group"><label>E-mail Institucional</label><input type="email" required></div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,34 +1,24 @@
 // Aguarda o carregamento completo do DOM
 document.addEventListener("DOMContentLoaded", () => {
     
-    const pagina = document.body.className;
+    // Identifica a página atual pelo ID do body
+    const pageId = document.body.id;
 
-    // --- LÓGICA DA PÁGINA DE LOGIN (login.html) ---
-    if (pagina === 'login-body') {
-        const loginForm = document.getElementById('login-form');
+    // --- LÓGICA DA PÁGINA DE LOGIN DO ALUNO ---
+    if (pageId === 'page-login-aluno') {
+        const loginForm = document.getElementById('login-aluno-form');
         
         // Modais de Cadastro e "Esqueci a Senha"
         setupModal('show-cadastro', 'modal-cadastro', 'close-cadastro');
         setupModal('show-esqueci', 'modal-esqueci', 'close-esqueci');
 
-        // Simulação de Login
+        // Simulação de Login do Aluno
         if (loginForm) {
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = document.getElementById('email').value;
-                
-                // Simula o login de Coordenador (Prof. Carlos)
-                if (email.includes('@ibmec.br') && !email.includes('@aluno')) {
-                    alert('Login como Coordenador realizado com sucesso!');
-                    window.location.href = 'coordenador.html';
-                
-                // Simula o login de Aluno (Ana)
-                } else if (email.includes('@aluno.ibmec.br')) {
-                    alert('Login como Aluno realizado com sucesso!');
-                    window.location.href = 'aluno.html';
-                } else {
-                    alert('E-mail institucional inválido. Use @aluno.ibmec.br ou @ibmec.br');
-                }
+                // Não precisamos mais checar o e-mail, a página já define o destino
+                alert('Login como Aluno realizado com sucesso!');
+                window.location.href = 'aluno_vagas.html';
             });
         }
         
@@ -47,115 +37,86 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- LÓGICA DOS PAINÉIS (aluno.html e coordenador.html) ---
-    if (pagina.includes('-body')) {
-        const contentArea = document.getElementById('content-area');
-        const navLinks = document.querySelectorAll('.nav-link');
+    // --- LÓGICA DA PÁGINA DE LOGIN DO COORDENADOR ---
+    if (pageId === 'page-login-coord') {
+        const loginForm = document.getElementById('login-coord-form');
+        
+        // Modal "Esqueci a Senha"
+        setupModal('show-esqueci', 'modal-esqueci', 'close-esqueci');
 
-        // Navegação principal
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        // Simulação de Login do Coordenador
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
-                // Remove 'active' de todos
-                navLinks.forEach(nav => nav.classList.remove('active'));
-                
-                // Adiciona 'active' ao clicado
-                link.classList.add('active');
-                
-                // Carrega o conteúdo da página
-                const page = link.getAttribute('data-page');
-                carregarConteudo(page);
+                alert('Login como Coordenador realizado com sucesso!');
+                window.location.href = 'coord_dashboard.html';
             });
-        });
-
-        // Simulação de Logout
-        document.getElementById('logout-btn')?.addEventListener('click', () => {
-            window.location.href = 'login.html';
-        });
-
-        // Função para carregar conteúdo dinâmico
-        function carregarConteudo(page) {
-            if (!contentArea) return;
-            
-            // CONTEÚDO DO ALUNO
-            if (page === 'vagas') {
-                contentArea.innerHTML = Template.Aluno.vagasAbertas();
-                // Adiciona listeners aos botões "Ver Detalhes"
-                document.querySelectorAll('.btn-detalhes-vaga').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const vagaId = btn.getAttribute('data-vaga-id');
-                        abrirModalDetalhesVaga(vagaId);
-                    });
-                });
-            } else if (page === 'candidaturas') {
-                contentArea.innerHTML = Template.Aluno.minhasCandidaturas();
-            } else if (page === 'perfil') {
-                contentArea.innerHTML = Template.Aluno.meuPerfil();
-            
-            // CONTEÚDO DO COORDENADOR
-            } else if (page === 'dashboard') {
-                contentArea.innerHTML = Template.Coordenador.dashboard();
-            } else if (page === 'vagas-criadas') {
-                contentArea.innerHTML = Template.Coordenador.vagasCriadas();
-                // Adiciona listeners aos botões "Gerenciar"
-                document.querySelectorAll('.btn-gerenciar-vaga').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const vagaNome = btn.getAttribute('data-vaga-nome');
-                        abrirModalGerenciarCandidatos(vagaNome);
-                    });
-                });
-            }
         }
 
-        // Carregar página inicial padrão
-        const paginaInicial = document.querySelector('.nav-link.active')?.getAttribute('data-page');
-        if (paginaInicial) {
-            carregarConteudo(paginaInicial);
-        }
+        // Simulação de Recuperação de Senha
+        document.getElementById('esqueci-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Link de recuperação enviado para o seu e-mail.');
+            document.getElementById('modal-esqueci').style.display = 'none';
+        });
     }
 
-    // --- MODAIS GERAIS DOS PAINÉIS ---
+
+    // --- LÓGICA GERAL DOS PAINÉIS (Modais) ---
 
     // Modal Detalhes da Vaga (Aluno)
     const modalDetalhes = document.getElementById('modal-detalhes-vaga');
-    const closeDetalhes = document.getElementById('close-detalhes');
-    
-    function abrirModalDetalhesVaga(vagaId) {
-        const vaga = dadosSimulados.vagas.find(v => v.id === vagaId);
-        if (vaga && modalDetalhes) {
-            document.getElementById('vaga-detalhes-content').innerHTML = Template.Aluno.detalhesVaga(vaga);
-            modalDetalhes.style.display = 'block';
-            
-            // Listener para o botão "Candidatar-se" (US003)
-            document.getElementById('btn-candidatar')?.addEventListener('click', () => {
-                alert(`Candidatura para ${vaga.materia} enviada com sucesso!`);
-                modalDetalhes.style.display = 'none';
-                // Aqui, em um app real, você atualizaria o status
+    if (modalDetalhes) {
+        document.getElementById('close-detalhes').addEventListener('click', () => modalDetalhes.style.display = 'none');
+        
+        document.querySelectorAll('.btn-detalhes-vaga').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const vagaId = btn.getAttribute('data-vaga-id');
+                abrirModalDetalhesVaga(vagaId);
             });
+        });
+
+        function abrirModalDetalhesVaga(vagaId) {
+            const vaga = dadosSimulados.vagas.find(v => v.id === vagaId);
+            if (vaga) {
+                document.getElementById('vaga-detalhes-content').innerHTML = Template.Aluno.detalhesVaga(vaga);
+                modalDetalhes.style.display = 'block';
+                
+                // Listener para o botão "Candidatar-se"
+                document.getElementById('btn-candidatar')?.addEventListener('click', () => {
+                    alert(`Candidatura para ${vaga.materia} enviada com sucesso!`);
+                    modalDetalhes.style.display = 'none';
+                });
+            }
         }
     }
-    closeDetalhes?.addEventListener('click', () => modalDetalhes.style.display = 'none');
 
-    // Modal Criar Vaga (Coordenador) (US005)
+    // Modal Criar Vaga (Coordenador)
     setupModal('show-criar-vaga', 'modal-criar-vaga', 'close-criar-vaga');
     document.getElementById('criar-vaga-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('Vaga publicada com sucesso!');
         document.getElementById('modal-criar-vaga').style.display = 'none';
-        carregarConteudo('vagas-criadas'); // Atualiza a lista
+        // Em um app real, aqui você atualizaria a lista de vagas
     });
 
-    // Modal Gerenciar Candidatos (Coordenador) (US006)
+    // Modal Gerenciar Candidatos (Coordenador)
     const modalGerenciar = document.getElementById('modal-gerenciar-candidatos');
-    const closeGerenciar = document.getElementById('close-gerenciar');
+    if (modalGerenciar) {
+        document.getElementById('close-gerenciar').addEventListener('click', () => modalGerenciar.style.display = 'none');
+        
+        document.querySelectorAll('.btn-gerenciar-vaga').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const vagaNome = btn.getAttribute('data-vaga-nome');
+                abrirModalGerenciarCandidatos(vagaNome);
+            });
+        });
 
-    function abrirModalGerenciarCandidatos(vagaNome) {
-        if (modalGerenciar) {
+        function abrirModalGerenciarCandidatos(vagaNome) {
             document.getElementById('gerenciar-content').innerHTML = Template.Coordenador.gerenciarCandidatos(vagaNome);
             modalGerenciar.style.display = 'block';
 
-            // Listeners para botões de Aprovar/Rejeitar (US007 e US008)
+            // Listeners para botões de Aprovar/Rejeitar
             modalGerenciar.querySelectorAll('.btn-aprovar').forEach(btn => {
                 btn.addEventListener('click', () => {
                     alert(`Aluno aprovado! Notificação enviada.`);
@@ -170,14 +131,56 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
-    closeGerenciar?.addEventListener('click', () => modalGerenciar.style.display = 'none');
-
 
     // Fechar modais ao clicar fora
     window.onclick = function(event) {
         if (event.target.classList.contains('modal')) {
             event.target.style.display = "none";
         }
+    }
+
+    
+    // --- LÓGICA DA PÁGINA DE PERFIL DO ALUNO ---
+    const perfilForm = document.getElementById('perfil-form');
+    if (perfilForm) {
+        const btnToggleEdit = document.getElementById('btn-toggle-edit');
+        const profileInputs = perfilForm.querySelectorAll('.profile-input'); // Seleciona campos editáveis
+
+        btnToggleEdit.addEventListener('click', () => {
+            // Verifica o estado atual pelo texto do botão
+            const isEditing = btnToggleEdit.textContent === 'Salvar Alterações';
+
+            if (isEditing) {
+                // --- MODO SALVAR ---
+                // (Simula o salvamento)
+                btnToggleEdit.textContent = 'Editar Perfil';
+                btnToggleEdit.classList.remove('btn-success'); // Remove a cor verde
+                btnToggleEdit.classList.add('btn-primary'); // Volta a ser azul
+
+                // Desabilita todos os campos editáveis
+                profileInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                
+                alert('Perfil salvo com sucesso!');
+
+            } else {
+                // --- MODO EDITAR ---
+                btnToggleEdit.textContent = 'Salvar Alterações';
+                btnToggleEdit.classList.remove('btn-primary');
+                btnToggleEdit.classList.add('btn-success'); // Fica verde para "Salvar"
+
+                // Habilita todos os campos editáveis
+                profileInputs.forEach(input => {
+                    input.disabled = false;
+                });
+                
+                // Foca no primeiro campo que ficou editável
+                if (profileInputs.length > 0) {
+                    profileInputs[0].focus(); 
+                }
+            }
+        });
     }
 
 });
@@ -194,65 +197,25 @@ function setupModal(triggerId, modalId, closeId) {
     }
 }
 
-// --- DADOS SIMULADOS E TEMPLATES HTML ---
+// --- DADOS SIMULADOS E TEMPLATES (Apenas para Modais) ---
 
 const dadosSimulados = {
     vagas: [
-        { id: 'v1', materia: 'Cálculo I', professor: 'Prof. Silva', prazo: '30/10/2025', inscritos: 3, requisitos: 'CR > 7.0, Aprovado em Cálculo I.', descricao: 'Auxiliar os alunos com listas de exercícios e plantões de dúvidas.' },
-        { id: 'v2', materia: 'Inteligência Artificial', professor: 'Prof. Carlos', prazo: '28/10/2025', inscritos: 5, requisitos: 'Aprovado em Estrutura de Dados. Conhecimento em Python.', descricao: 'Apoio no desenvolvimento do projeto final da disciplina e correção de trabalhos.' },
-        { id: 'v3', materia: 'Econometria', professor: 'Profa. Beatriz', prazo: '05/11/2025', inscritos: 1, requisitos: 'CR > 8.0.', descricao: 'Suporte em laboratórios de Stata/R.' }
+        { id: 'v1', materia: 'Engenharia de Computação', professor: 'Prof. Silva', prazo: '30/10/2025', inscritos: 3, requisitos: 'CR > 7.0, Aprovado em Cálculo I.', descricao: 'Auxiliar os alunos com listas de exercícios e plantões de dúvidas.' },
+        { id: 'v2', materia: 'Métodos Quantitativos', professor: 'Prof. Carlos', prazo: '28/10/2025', inscritos: 5, requisitos: 'Aprovado em Estrutura de Dados. Conhecimento em Python.', descricao: 'Apoio no desenvolvimento do projeto final da disciplina e correção de trabalhos.' },
+        { id: 'v3', materia: 'Matemática Discreta', professor: 'Profa. Beatriz', prazo: '05/11/2025', inscritos: 1, requisitos: 'CR > 8.0.', descricao: 'Suporte em laboratórios de Stata/R.' }
     ],
-    candidaturas: [
-        { materia: 'Programação de Computadores I', status: 'Aprovado' },
-        { materia: 'Geometria Analítica', status: 'Rejeitado' },
-        { materia: 'Física I', status: 'Em Análise' }
-    ],
+    // ATUALIZADO AQUI
     candidatos: [
-        { nome: 'Ana, a Aluna', curso: 'Eng. Computação', cr: 8.5 },
+        { nome: 'Bruno Norton', curso: 'Eng. Computação', cr: 8.5 },
         { nome: 'João Vitor', curso: 'Eng. Computação', cr: 7.9 },
         { nome: 'Mariana Costa', curso: 'Administração', cr: 9.1 }
     ]
 };
 
-// Objeto para guardar os templates HTML
+// Objeto para guardar os templates HTML (Apenas dos Modais)
 const Template = {
-    // === TEMPLATES DO ALUNO ===
     Aluno: {
-        vagasAbertas: () => `
-            <div class="content-section">
-                <h2>Vagas Abertas (US001)</h2>
-                
-                <div class="filtros-container">
-                    <div class="input-group">
-                        <label for="filtro-curso">Filtrar por Curso</label>
-                        <select id="filtro-curso">
-                            <option value="">Todos os Cursos</option>
-                            <option value="eng">Engenharia</option>
-                            <option value="adm">Administração</option>
-                            <option value="dir">Direito</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="filtro-busca">Buscar por Matéria</label>
-                        <input type="text" id="filtro-busca" placeholder="Ex: Cálculo I">
-                    </div>
-                    <button class="btn btn-primary">Filtrar</button>
-                </div>
-                
-                <div class="lista-vagas">
-                    ${dadosSimulados.vagas.map(vaga => `
-                        <div class="vaga-card">
-                            <div class="vaga-card-info">
-                                <h3>${vaga.materia}</h3>
-                                <p>Professor: ${vaga.professor}</p>
-                                <p>Prazo para inscrição: ${vaga.prazo}</p>
-                            </div>
-                            <button class="btn btn-primary btn-detalhes-vaga" data-vaga-id="${vaga.id}">Ver Detalhes</button>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `,
         detalhesVaga: (vaga) => `
             <h2>${vaga.materia}</h2>
             <p><strong>Professor Responsável:</strong> ${vaga.professor}</p>
@@ -265,109 +228,11 @@ const Template = {
             <p>${vaga.descricao}</p>
             
             <button id="btn-candidatar" class="btn btn-primary btn-full" style="margin-top: 20px;">
-                Quero me candidatar (US003)
+                Quero me candidatar
             </button>
-        `,
-        minhasCandidaturas: () => `
-            <div class="content-section">
-                <h2>Minhas Candidaturas (US004)</h2>
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Matéria</th>
-                            <th>Status da Candidatura</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${dadosSimulados.candidaturas.map(c => `
-                            <tr>
-                                <td>${c.materia}</td>
-                                <td><span class="status status-${c.status.toLowerCase().replace(' ', '-')}">${c.status}</span></td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `,
-        meuPerfil: () => `
-            <div class="content-section">
-                <h2>Meu Perfil</h2>
-                <form>
-                    <div class="input-group">
-                        <label>Nome Completo</label>
-                        <input type="text" value="Ana, a Aluna" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label>E-mail</label>
-                        <input type="email" value="ana.silva@aluno.ibmec.br" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label>Curso</label>
-                        <input type="text" value="Engenharia de Computação" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label>Matrícula</label>
-                        <input type="text" value="202300123" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label>Link do Currículo Lattes (v2.0)</label>
-                        <input type="text" placeholder="http://lattes.cnpq.br/seu-id">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                </form>
-            </div>
         `
     },
-    // === TEMPLATES DO COORDENADOR ===
     Coordenador: {
-        dashboard: () => `
-            <div class="content-section">
-                <h2>Painel Principal</h2>
-                <div class="dashboard-grid">
-                    <div class="stat-card">
-                        <h3>${dadosSimulados.vagas.length}</h3>
-                        <p>Vagas Ativas</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>${dadosSimulados.vagas.reduce((acc, v) => acc + v.inscritos, 0)}</h3>
-                        <p>Total de Candidatos</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>8</h3>
-                        <p>Novos Candidatos (Hoje)</p>
-                    </div>
-                </div>
-            </div>
-        `,
-        vagasCriadas: () => `
-            <div class="content-section">
-                <h2>Vagas Criadas</h2>
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Matéria</th>
-                            <th>Prazo Final</th>
-                            <th>Inscritos</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${dadosSimulados.vagas.map(vaga => `
-                            <tr>
-                                <td>${vaga.materia}</td>
-                                <td>${vaga.prazo}</td>
-                                <td>${vaga.inscritos}</td>
-                                <td>
-                                    <button class="btn btn-primary btn-gerenciar-vaga" data-vaga-nome="${vaga.materia}">
-                                        Gerenciar (US006)
-                                    </button>
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `,
         gerenciarCandidatos: (vagaNome) => `
             <h2>Gerenciamento de Candidatos</h2>
             <h3>Vaga: ${vagaNome}</h3>
@@ -379,7 +244,7 @@ const Template = {
                         <th>Curso</th>
                         <th>CR</th>
                         <th>Documentos</th>
-                        <th>Ações (US007)</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -392,6 +257,7 @@ const Template = {
                             <td>
                                 <button class="btn btn-success btn-aprovar">Aprovar</button>
                                 <button class="btn btn-danger btn-rejeitar">Rejeitar</button>
+
                             </td>
                         </tr>
                     `).join('')}

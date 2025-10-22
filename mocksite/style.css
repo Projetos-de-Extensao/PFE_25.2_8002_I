@@ -1,7 +1,7 @@
 /* --- GERAL E RESET --- */
 :root {
-    --cor-primaria: #004a91; /* Tom de azul Ibmec */
-    --cor-secundaria: #fdb913; /* Tom de amarelo Ibmec */
+    --cor-primaria: #004a91; /* Azul Ibmec */
+    --cor-secundaria: #fdb913; /* Amarelo Ibmec */
     --cor-texto: #333;
     --cor-fundo: #f4f7fa;
     --cor-borda: #ddd;
@@ -12,11 +12,14 @@
     --cor-analise: #ffc107;
 }
 
+/* Importando uma fonte mais moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -31,55 +34,129 @@ body {
     padding: 20px;
 }
 
-/* --- LOGIN PAGE --- */
+/* --- PÁGINA DE LOGIN ATUALIZADA --- */
 .login-body {
-    background: linear-gradient(to right, var(--cor-primaria), #003a70);
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #003a70 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
 .login-container {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 420px;
 }
+
+/* Logo (Sugestão) */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo img {
+    max-width: 150px; /* Ajuste o tamanho do seu logo */
+}
+/* Placeholder de texto se não houver imagem */
+.logo-placeholder {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-branco);
+    padding: 10px;
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 8px;
+    display: inline-block;
+}
+
 
 .form-card {
     background: var(--cor-branco);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.form-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
 .form-card h2 {
     text-align: center;
     color: var(--cor-primaria);
     margin-bottom: 10px;
+    font-weight: 600;
 }
 .form-card p {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     color: #666;
+    font-size: 0.95rem;
 }
+
+/* --- (NOVO) Estilos da Seleção de Perfil (index.html) --- */
+.role-selection {
+    padding: 40px 30px;
+}
+.btn-role {
+    display: flex; /* Mudado para flex */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-preto);
+    border: 2px solid var(--cor-secundaria);
+    transition: all 0.3s ease;
+}
+.btn-role:last-child {
+    margin-bottom: 0;
+}
+.btn-role:hover {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.role-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    display: none; /* Escondido por enquanto. Substitua o '?' por um ícone img ou font-awesome */
+}
+/* --- Fim dos novos estilos --- */
+
 
 .input-group {
     margin-bottom: 20px;
 }
 .input-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 .input-group input,
 .input-group textarea,
 .input-group select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px 15px;
     border: 1px solid var(--cor-borda);
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+.input-group input:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(0, 74, 145, 0.2);
+    outline: none;
+}
+
 .input-group-row {
     display: flex;
     gap: 20px;
@@ -90,9 +167,9 @@ body {
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
@@ -103,9 +180,12 @@ body {
 .btn-primary {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
+    width: 100%; /* Faz o botão de login preencher */
 }
 .btn-primary:hover {
     background-color: #003a70;
+    box-shadow: 0 4px 10px rgba(0, 58, 112, 0.3);
+    transform: translateY(-2px);
 }
 .btn-secondary {
     background-color: #6c757d;
@@ -123,14 +203,16 @@ body {
 .form-links {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .form-links a {
     color: var(--cor-primaria);
     text-decoration: none;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 .form-links a:hover {
+    color: var(--cor-secundaria);
     text-decoration: underline;
 }
 
@@ -144,32 +226,34 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 70px;
 }
 .header h1 {
     color: var(--cor-primaria);
     font-size: 1.5rem;
+    font-weight: 600;
 }
 .user-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 .user-info span {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .main-layout {
     display: flex;
     gap: 30px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .sidebar {
-    flex: 0 0 220px;
+    flex: 0 0 240px;
     background: var(--cor-branco);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     align-self: flex-start;
 }
 .sidebar ul {
@@ -181,18 +265,21 @@ body {
 }
 .sidebar a {
     display: block;
-    padding: 10px 15px;
+    padding: 12px 18px;
     text-decoration: none;
     color: var(--cor-texto);
-    border-radius: 5px;
+    border-radius: 8px;
+    font-weight: 500;
 }
 .sidebar a:hover {
     background-color: var(--cor-fundo);
+    color: var(--cor-primaria);
 }
 .sidebar a.active {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
     font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 74, 145, 0.3);
 }
 
 #content-area {
@@ -202,21 +289,22 @@ body {
 .content-section {
     background: var(--cor-branco);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 .content-section h2 {
     color: var(--cor-primaria);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-bottom: 2px solid var(--cor-fundo);
     padding-bottom: 10px;
+    font-weight: 600;
 }
 
 /* --- COMPONENTES (Vagas, Tabelas, Filtros) --- */
 .filtros-container {
     display: flex;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     align-items: flex-end;
 }
 .filtros-container .input-group {
@@ -232,19 +320,27 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .vaga-card:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--cor-primaria);
 }
 .vaga-card-info h3 {
     color: var(--cor-primaria);
     margin-bottom: 5px;
+    font-weight: 600;
 }
 .vaga-card-info p {
     color: #555;
     font-size: 0.9rem;
     margin-bottom: 3px;
+}
+.vaga-card .btn-primary:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-preto);
+    box-shadow: none;
+    transform: none;
 }
 
 .tabela {
@@ -254,8 +350,9 @@ body {
 }
 .tabela th, .tabela td {
     border: 1px solid var(--cor-borda);
-    padding: 12px;
+    padding: 12px 15px;
     text-align: left;
+    vertical-align: middle;
 }
 .tabela th {
     background-color: var(--cor-fundo);
@@ -265,14 +362,16 @@ body {
     padding: 5px 10px;
     font-size: 0.9rem;
     margin-right: 5px;
+    border-radius: 5px;
 }
 .status {
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 700;
     text-align: center;
     color: var(--cor-preto);
+    text-transform: uppercase;
 }
 .status-analise { background-color: var(--cor-analise); }
 .status-aprovado { background-color: var(--cor-sucesso); color: var(--cor-branco); }
@@ -289,16 +388,17 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
 }
 .modal-content {
     background-color: var(--cor-branco);
-    margin: 5% auto;
+    margin: 4% auto;
     padding: 30px;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
     position: relative;
-    animation: fadeIn 0.3s;
+    animation: slideIn 0.3s;
 }
 .modal-content.large { max-width: 800px; }
 .modal-content.x-large { max-width: 1000px; }
@@ -315,7 +415,11 @@ body {
 .close-btn:hover { color: var(--cor-preto); }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -329,6 +433,7 @@ body {
     margin-bottom: 10px;
     border-bottom: 1px solid var(--cor-borda);
     padding-bottom: 5px;
+    font-weight: 600;
 }
 #vaga-detalhes-content p {
     margin-bottom: 10px;
@@ -337,23 +442,29 @@ body {
 /* Painel Coordenador */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 .stat-card {
-    background: var(--cor-fundo);
+    background: linear-gradient(135deg, var(--cor-fundo), #eaf1f8);
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     border: 1px solid var(--cor-borda);
+    transition: all 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 74, 145, 0.1);
 }
 .stat-card h3 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: var(--cor-primaria);
     margin: 0;
+    font-weight: 700;
 }
 .stat-card p {
     font-size: 1rem;
     color: #555;
-    font-weight: 600;
+    font-weight: 500;
 }

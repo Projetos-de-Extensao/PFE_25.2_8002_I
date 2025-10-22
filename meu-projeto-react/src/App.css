@@ -1,0 +1,153 @@
+/* App.css */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.favorite-counter {
+  margin-top: 15px;
+  background: rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 25px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* --- ALTERADO: Grid de Países com Media Queries --- */
+.country-grid {
+  display: grid;
+  gap: 25px; /* Espaçamento entre os cards */
+  
+  /* 1. Padrão (Mobile): 1 coluna */
+  grid-template-columns: 1fr;
+}
+
+/* 2. Telas Médias (Tablet): 2 colunas */
+@media (min-width: 640px) {
+  .country-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3. Telas Largas (Desktop): 3 colunas, como você pediu */
+/* A partir de 1024px de largura, ele mudará para 3 colunas */
+@media (min-width: 1024px) {
+  .country-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* --- FIM DA ALTERAÇÃO --- */
+
+
+.filter-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: #e74c3c;
+}
+
+/* --- ALTERADO: Card usa Flexbox para alinhamento vertical --- */
+.country-card {
+  border: 1px solid #e1e8ed;
+  border-radius: 15px;
+  padding: 25px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  
+  /* Novas regras de Flexbox */
+  display: flex;
+  flex-direction: column; /* Organiza o conteúdo (header, info) em coluna */
+}
+/* --- FIM DA ALTERAÇÃO --- */
+
+.country-card.favorite {
+  border-color: #e74c3c;
+  box-shadow: 0 3px 15px rgba(231, 76, 60, 0.2);
+}
+
+.country-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+/* --- NOVO: Estilos para organizar as informações --- */
+.country-info {
+  flex-grow: 1; /* Faz esta seção crescer para preencher o card */
+  display: flex;
+  flex-direction: column; /* Organiza os <p> e o badge verticalmente */
+}
+
+.country-info p {
+  display: flex;
+  justify-content: space-between; /* Alinha label (strong) e valor */
+  margin: 6px 0; /* Espaçamento vertical consistente */
+}
+
+.country-info p strong {
+  margin-right: 15px; /* Espaço entre o label e o valor */
+  color: #555;
+  flex-shrink: 0; /* Impede que o label "Capital:", etc. encolha */
+}
+/* --- FIM DO NOVO --- */
+
+
+/* --- ALTERADO: Badge sempre no final do card --- */
+.favorite-badge {
+  color: #e74c3c;
+  font-weight: bold;
+  
+  /* Novas regras */
+  margin-top: auto; /* Empurra o badge para o final do card */
+  padding-top: 10px; /* Espaço acima do badge */
+  border-top: 1px solid #f0f0f0; /* Linha sutil de separação */
+  text-align: center;
+  margin-top: 15px;
+}
+/* --- FIM DA ALTERAÇÃO --- */

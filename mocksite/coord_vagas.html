@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Vagas Criadas | Painel do Coordenador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Gestão de Monitorias</h1>
+            <div class="user-info">
+                <span>Olá, Prof. Carlos!</span>
+                <a href="index.html" class="btn btn-secondary">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="coord_dashboard.html" class="nav-link">Painel Principal</a></li>
+                <li><a href="coord_vagas.html" class="nav-link active">Vagas Criadas</a></li>
+            </ul>
+            <button id="show-criar-vaga" class="btn btn-primary btn-full">Criar Nova Vaga</button>
+        </nav>
+
+        <main id="content-area">
+            <div class="content-section">
+                <h2>Vagas Criadas</h2>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Matéria</th>
+                            <th>Prazo Final</th>
+                            <th>Inscritos</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Engenharia de Computação</td>
+                            <td>30/10/2025</td>
+                            <td>3</td>
+                            <td><button class="btn btn-primary btn-gerenciar-vaga" data-vaga-nome="Engenharia de Computação">Gerenciar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Métodos Quantitativos</td>
+                            <td>28/10/2025</td>
+                            <td>5</td>
+                            <td><button class="btn btn-primary btn-gerenciar-vaga" data-vaga-nome="Métodos Quantitativos">Gerenciar</button></td>
+                        </tr>
+                         <tr>
+                            <td>Matemática Discreta</td>
+                            <td>05/11/2025</td>
+                            <td>1</td>
+                            <td><button class="btn btn-primary btn-gerenciar-vaga" data-vaga-nome="Matemática Discreta">Gerenciar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-criar-vaga" class="modal">
+        <div class="modal-content large">
+            <span class="close-btn" id="close-criar-vaga">&times;</span>
+            <form id="criar-vaga-form">
+                <h2>Publicar Nova Vaga de Monitoria</h2>
+                <h4>Informações Básicas</h4>
+                <div class="input-group">
+                    <label for="vaga-materia">Matéria</label>
+                    <input type="text" id="vaga-materia" placeholder="Ex: Engenharia de Computação" required>
+                </div>
+                <div class="input-group">
+                    <label for="vaga-professor">Professor Responsável</label>
+                    <input type="text" id="vaga-professor" required>
+                </div>
+                <h4>Detalhes e Requisitos</h4>
+                 <div class="input-group">
+                    <label for="vaga-requisitos">Pré-requisitos</label>
+                    <textarea id="vaga-requisitos" rows="3" placeholder="Ex: Ter sido aprovado na matéria com nota > 8.0"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="vaga-descricao">Descrição das Atividades</label>
+                    <textarea id="vaga-descricao" rows="5"></textarea>
+                </div>
+                <h4>Configuração</h4>
+                <div class="input-group-row">
+                    <div class="input-group">
+                        <label for="vaga-numero">Número de Vagas</label>
+                        <input type="number" id="vaga-numero" value="1" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="vaga-prazo">Prazo Final para Inscrições</label>
+                        <input type="date" id="vaga-prazo" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar Vaga</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-gerenciar-candidatos" class="modal">
+        <div class="modal-content x-large">
+            <span class="close-btn" id="close-gerenciar">&times;</span>
+            <div id="gerenciar-content">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas Abertas | Painel do Aluno</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Plataforma de Monitoria</h1>
+            <div class="user-info">
+                <span>Olá, Bruno Norton!</span>
+                <a href="index.html" class="btn btn-secondary">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="aluno_vagas.html" class="nav-link active">Vagas Abertas</a></li>
+                <li><a href="aluno_candidaturas.html" class="nav-link">Minhas Candidaturas</a></li>
+                <li><a href="aluno_perfil.html" class="nav-link">Meu Perfil</a></li>
+            </ul>
+        </nav>
+
+        <main id="content-area">
+            <div class="content-section">
+                <h2>Vagas Abertas</h2>
+                
+                <div class="filtros-container">
+                    <div class="input-group">
+                        <label for="filtro-curso">Filtrar por Curso</label>
+                        <select id="filtro-curso">
+                            <option value="">Todos os Cursos</option>
+                            <option value="eng">Engenharia</option>
+                            <option value="adm">Administração</option>
+                            <option value="dir">Direito</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="filtro-busca">Buscar por Matéria</label>
+                        <input type="text" id="filtro-busca" placeholder="Ex: Cálculo I">
+                    </div>
+                    <button class="btn btn-primary">Filtrar</button>
+                </div>
+                
+                <div class="lista-vagas">
+                    
+                    <div class="vaga-card">
+                        <div class="vaga-card-info">
+                            <h3>Engenharia de Computação</h3>
+                            <p>Professor: Prof. Silva</p>
+                            <p>Prazo para inscrição: 30/10/2025</p>
+                        </div>
+                        <button class="btn btn-primary btn-detalhes-vaga" data-vaga-id="v1">Ver Detalhes</button>
+                    </div>
+                    
+                    <div class="vaga-card">
+                        <div class="vaga-card-info">
+                            <h3>Métodos Quantitativos</h3>
+                            <p>Professor: Prof. Carlos</p>
+                            <p>Prazo para inscrição: 28/10/2025</p>
+                        </div>
+                        <button class="btn btn-primary btn-detalhes-vaga" data-vaga-id="v2">Ver Detalhes</button>
+                    </div>
+                    
+                    <div class="vaga-card">
+                        <div class="vaga-card-info">
+                            <h3>Matemática Discreta</h3>
+                            <p>Professor: Profa. Beatriz</p>
+                            <p>Prazo para inscrição: 05/11/2025</p>
+                        </div>
+                        <button class="btn btn-primary btn-detalhes-vaga" data-vaga-id="v3">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-detalhes-vaga" class="modal">
+        <div class="modal-content large">
+            <span class="close-btn" id="close-detalhes">&times;</span>
+            <div id="vaga-detalhes-content">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
