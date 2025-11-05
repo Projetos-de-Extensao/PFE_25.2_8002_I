@@ -61,3 +61,61 @@ title: Sprint Planning
 - Reunião: Google Meet
 - Pesquisa: Google Forms
 - Colheita dos pontos: Mentimeter
+
+# Sprint II (Static Prototyping - HTML/CSS)
+
+> 23/09/2025 à 30/09/2025
+
+## Planejamento de Interação
+
+* **Objetivo da Sprint:** Traduzir os requisitos e fluxos definidos em um protótipo estático (HTML/CSS), criando todas as telas necessárias para a navegação do aluno e do coordenador.
+
+* **Presentes na reunião:**
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+| Desenvolver a estrutura base do `style.css` (variáveis, layout, header, sidebar).| Gabriel|
+| Criar as telas de fluxo de entrada: `index.html`, `login_aluno.html`, `login_coord.html`.| Iago|
+| Desenvolver as telas estáticas do painel do Aluno (`aluno_vagas.html`, `aluno_candidaturas.html`, `aluno_perfil.html`).| Bruno|
+| Desenvolver as telas estáticas do painel do Coordenador (`coord_dashboard.html`, `coord_vagas.html`).| Pedro|
+| Estilizar componentes reutilizáveis (modais, tabelas, cards) no `style.css`.| Gabriel|
+| Revisar e padronizar o HTML de todas as páginas.| Todos|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- As classes CSS estão genéricas o suficiente para serem reutilizadas?
+- O layout do modal de "Criar Vaga" está muito complexo para uma única tela?
+
+#### Riscos Encontrados
+
+- O `style.css` pode ficar muito grande e difícil de manter se não for bem organizado desde o início.
+
+#### Pontos Positivos
+
+- A identidade visual (cores, fontes) foi implementada consistentemente em todas as telas.
+- A divisão das telas entre os membros funcionou bem, cobrindo todo o escopo visual do projeto.
+
+#### Pontos Negativos
+
+- As páginas são apenas "cascas"; nenhum botão ou link funciona, o que dificulta a validação do fluxo.
+- Algumas inconsistências de nomenclatura de classes CSS foram encontradas durante o merge.
+
+#### O que podemos melhorar?
+
+- Definir uma convenção de nomenclatura (como BEM) para o CSS na próxima fase.
+- Focar na interatividade (JavaScript) na próxima Sprint para "dar vida" ao protótipo.
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (HTML/CSS)
