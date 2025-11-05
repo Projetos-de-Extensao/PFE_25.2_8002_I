@@ -9,9 +9,9 @@ title: Sprint Planning
 
 ## Planejamento de Interação
 
-* **Objetivo da Sprint:** Entender o problema, definir o escopo inicial e levantar os primeiros requisitos através da pesquisa com os usuários.
+* *Objetivo da Sprint:* Entender o problema, definir o escopo inicial e levantar os primeiros requisitos através da pesquisa com os usuários.
 
-* **Presentes na reunião:**
+* *Presentes na reunião:*
 |Nome|
 |----|
 |Bruno Norton|
@@ -68,9 +68,9 @@ title: Sprint Planning
 
 ## Planejamento de Interação
 
-* **Objetivo da Sprint:** Traduzir os requisitos e fluxos definidos em um protótipo estático (HTML/CSS), criando todas as telas necessárias para a navegação do aluno e do coordenador.
+* *Objetivo da Sprint:* Traduzir os requisitos e fluxos definidos em um protótipo estático (HTML/CSS), criando todas as telas necessárias para a navegação do aluno e do coordenador.
 
-* **Presentes na reunião:**
+* *Presentes na reunião:*
 |Nome|
 |----|
 |Bruno Norton|
@@ -82,11 +82,11 @@ title: Sprint Planning
 
 |Tarefa|Responsabilidade|
 |---|----|
-| Desenvolver a estrutura base do `style.css` (variáveis, layout, header, sidebar).| Gabriel|
-| Criar as telas de fluxo de entrada: `index.html`, `login_aluno.html`, `login_coord.html`.| Iago|
-| Desenvolver as telas estáticas do painel do Aluno (`aluno_vagas.html`, `aluno_candidaturas.html`, `aluno_perfil.html`).| Bruno|
-| Desenvolver as telas estáticas do painel do Coordenador (`coord_dashboard.html`, `coord_vagas.html`).| Pedro|
-| Estilizar componentes reutilizáveis (modais, tabelas, cards) no `style.css`.| Gabriel|
+| Desenvolver a estrutura base do style.css (variáveis, layout, header, sidebar).| Gabriel|
+| Criar as telas de fluxo de entrada: index.html, login_aluno.html, login_coord.html.| Iago|
+| Desenvolver as telas estáticas do painel do Aluno (aluno_vagas.html, aluno_candidaturas.html, aluno_perfil.html).| Bruno|
+| Desenvolver as telas estáticas do painel do Coordenador (coord_dashboard.html, coord_vagas.html).| Pedro|
+| Estilizar componentes reutilizáveis (modais, tabelas, cards) no style.css.| Gabriel|
 | Revisar e padronizar o HTML de todas as páginas.| Todos|
 
 ### Sprint Retrospective/Review Meeting
@@ -98,7 +98,7 @@ title: Sprint Planning
 
 #### Riscos Encontrados
 
-- O `style.css` pode ficar muito grande e difícil de manter se não for bem organizado desde o início.
+- O style.css pode ficar muito grande e difícil de manter se não for bem organizado desde o início.
 
 #### Pontos Positivos
 
@@ -126,9 +126,9 @@ title: Sprint Planning
 
 ## Planejamento de Interação
 
-* **Objetivo da Sprint:** Adicionar interatividade básica ao protótipo com JavaScript. Isso inclui simulação de login, navegação e a funcionalidade de modais simples e do formulário de perfil.
+* *Objetivo da Sprint:* Adicionar interatividade básica ao protótipo com JavaScript. Isso inclui simulação de login, navegação e a funcionalidade de modais simples e do formulário de perfil.
 
-* **Presentes na reunião:**
+* *Presentes na reunião:*
 |Nome|
 |----|
 |Bruno Norton|
@@ -140,28 +140,28 @@ title: Sprint Planning
 
 |Tarefa|Responsabilidade|
 |---|----|
-| Criar o `script.js` e a função helper `setupModal` para abrir/fechar modais.| Gabriel|
+| Criar o script.js e a função helper setupModal para abrir/fechar modais.| Gabriel|
 | Implementar a simulação de login (aluno e coordenador) com redirecionamento de página.| Bruno|
-| Conectar os modais de "Esqueci a Senha" e "Criar Conta" e simular o envio de formulário com `alert()`.| Pedro|
-| Implementar a lógica de "Editar Perfil" na página `aluno_perfil.html` (alternar `disabled` e texto do botão).| Iago|
-| Conectar o botão "Criar Nova Vaga" (`coord_dashboard.html` e `coord_vagas.html`) para abrir o modal.| Gabriel|
-| Simular a submissão do formulário "Criar Vaga" com `alert()` e fechar o modal.| Bruno|
+| Conectar os modais de "Esqueci a Senha" e "Criar Conta" e simular o envio de formulário com alert().| Pedro|
+| Implementar a lógica de "Editar Perfil" na página aluno_perfil.html (alternar disabled e texto do botão).| Iago|
+| Conectar o botão "Criar Nova Vaga" (coord_dashboard.html e coord_vagas.html) para abrir o modal.| Gabriel|
+| Simular a submissão do formulário "Criar Vaga" com alert() e fechar o modal.| Bruno|
 
 ### Sprint Retrospective/Review Meeting
 
 #### Dúvidas da Interação
 
 - A lógica de "Editar Perfil" está clara para o usuário (botão mudar de "Editar" para "Salvar")?
-- Estamos usando `alert()` demais? Quando devemos trocar por algo mais elegante?
+- Estamos usando alert() demais? Quando devemos trocar por algo mais elegante?
 
 #### Riscos Encontrados
 
-- O `script.js` pode crescer rapidamente e ficar desorganizado, misturando lógicas de páginas diferentes.
+- O script.js pode crescer rapidamente e ficar desorganizado, misturando lógicas de páginas diferentes.
 
 #### Pontos Positivos
 
 - O protótipo agora é navegável e interativo. Os fluxos de login e cadastro podem ser testados.
-- A função `setupModal` se provou muito útil e evitou repetição de código.
+- A função setupModal se provou muito útil e evitou repetição de código.
 - A funcionalidade de "Editar Perfil" (toggle) funciona muito bem.
 
 #### Pontos Negativos
@@ -171,7 +171,7 @@ title: Sprint Planning
 
 #### O que podemos melhorar?
 
-- Separar a lógica no `script.js` por "página" ou "contexto" (ex:lógica do painel do aluno,lógica de login).
+- Separar a lógica no script.js por "página" ou "contexto" (ex:lógica do painel do aluno,lógica de login).
 - Focar na próxima Sprint em popular os modais complexos com dados dinâmicos.
 
 #### Ferramentas utilizadas
@@ -185,9 +185,9 @@ title: Sprint Planning
 
 ## Planejamento de Interação
 
-* **Objetivo da Sprint:** Finalizar o protótipo funcional simulando um back-end. Isso envolve criar dados "mockados" e usá-los para popular dinamicamente os modais de "Detalhes da Vaga" e "Gerenciar Candidatos", implementando as ações principais.
+* *Objetivo da Sprint:* Finalizar o protótipo funcional simulando um back-end. Isso envolve criar dados "mockados" e usá-los para popular dinamicamente os modais de "Detalhes da Vaga" e "Gerenciar Candidatos", implementando as ações principais.
 
-* **Presentes na reunião:**
+* *Presentes na reunião:*
 |Nome|
 |----|
 |Bruno Norton|
@@ -199,18 +199,18 @@ title: Sprint Planning
 
 |Tarefa|Responsabilidade|
 |---|----|
-| Criar a estrutura `dadosSimulados` (vagas, candidatos) e o objeto `Template` no `script.js`.| Gabriel|
-| Implementar a função `abrirModalDetalhesVaga` para carregar dados de `dadosSimulados.vagas`.| Bruno|
-| Implementar a ação do botão "Quero me candidatar" (simulação com `alert()`).| Bruno|
-| Implementar a função `abrirModalGerenciarCandidatos` para carregar dados de `dadosSimulados.candidatos` e gerar a tabela.| Pedro|
-| Implementar as ações "Aprovar" e "Rejeitar" no modal de gerenciamento (simulação com `alert()` e remoção do item da tabela).| Iago|
+| Criar a estrutura dadosSimulados (vagas, candidatos) e o objeto Template no script.js.| Gabriel|
+| Implementar a função abrirModalDetalhesVaga para carregar dados de dadosSimulados.vagas.| Bruno|
+| Implementar a ação do botão "Quero me candidatar" (simulação com alert()).| Bruno|
+| Implementar a função abrirModalGerenciarCandidatos para carregar dados de dadosSimulados.candidatos e gerar a tabela.| Pedro|
+| Implementar as ações "Aprovar" e "Rejeitar" no modal de gerenciamento (simulação com alert() e remoção do item da tabela).| Iago|
 | Revisão final dos fluxos e interações do protótipo.| Todos|
 
 ### Sprint Retrospective/Review Meeting
 
 #### Dúvidas da Interação
 
-- Os `dadosSimulados` são suficientes para cobrir todos os casos de teste (ex: vaga sem candidatos)?
+- Os dadosSimulados são suficientes para cobrir todos os casos de teste (ex: vaga sem candidatos)?
 - A remoção do item da tabela após aprovar/rejeitar é a melhor forma de dar feedback?
 
 #### Riscos Encontrados
@@ -220,19 +220,87 @@ title: Sprint Planning
 #### Pontos Positivos
 
 - O protótipo está 100% funcional e simula o fluxo completo da aplicação.
-- A geração dinâmica de HTML pelos `Templates` funcionou perfeitamente e tornou o código limpo.
+- A geração dinâmica de HTML pelos Templates funcionou perfeitamente e tornou o código limpo.
 - As interações de "Aprovar" e "Rejeitar" dão uma sensação muito realista de gerenciamento.
 
 #### Pontos Negativos
 
-- A página de "Minhas Candidaturas" (`aluno_candidaturas.html`) ainda está com dados estáticos no HTML, não refletindo as ações do coordenador. (Nota: Isso foi identificado como uma melhoria para um próximo ciclo).
+- A página de "Minhas Candidaturas" (aluno_candidaturas.html) ainda está com dados estáticos no HTML, não refletindo as ações do coordenador. (Nota: Isso foi identificado como uma melhoria para um próximo ciclo).
 
 #### O que podemos melhorar?
 
-- Em um próximo ciclo, poderíamos fazer a página `aluno_candidaturas.html` refletir os dados simulados, mas para o escopo do protótipo atual, o objetivo foi atingido.
+- Em um próximo ciclo, poderíamos fazer a aluno_candidaturas.html refletir os dados simulados, mas para o escopo do protótipo atual, o objetivo foi atingido.
 - O protótipo está pronto para ser usado em testes de usabilidade com usuários reais.
 
 #### Ferramentas utilizadas
 
 - Reunião: Google Meet
 - Desenvolvimento: Visual Studio Code (JavaScript)
+
+# Sprint V (Migration to React & Componentization)
+
+> 17/10/2025 à 05/11/2025
+
+## Planejamento de Interação
+
+* *Objetivo da Sprint:* Migrar o protótipo estático (HTML/CSS/JS) para uma aplicação React. O foco é componentizar a UI, introduzir roteamento (react-router-dom) e gerenciar o estado local com useState, recriando a funcionalidade do protótipo JS.
+
+* *Presentes na reunião:*
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+| Configurar o ambiente do projeto React (ex: Vite) e instalar o react-router-dom.| Gabriel|
+| Criar o App.jsx e definir todas as rotas da aplicação (createBrowserRouter).| Gabriel|
+| Converter as páginas de login e seleção (index.html, login_*.html) em Pages React (IndexPage.jsx, LoginAlunoPage.jsx).| Iago|
+| Criar os AlunoLayout.jsx e CoordLayout.jsx usando <Outlet> e <Link> para navegação.| Pedro|
+| Converter as páginas internas do Aluno (aluno_*.html) em Pages filhas (AlunoVagasAbertas.jsx, AlunoCandidaturas.jsx, AlunoPerfil.jsx).| Bruno|
+| Converter as páginas internas do Coordenador (coord_*.html) em Pages filhas (CoordDashboard.jsx, CoordVagas.jsx).| Pedro|
+| Migrar os 'Templates' JS dos modais para Componentes React (VagaModal.jsx, CriarVagaModal.jsx, GerenciarCandidatosModal.jsx).| Iago|
+| Substituir a lógica imperativa do script.js (ex: toggle de perfil, abrir/fechar modal) por estado declarativo do React (useState).| Todos|
+| Mover os dadosSimulados para dentro dos componentes React (ex: DADOS_VAGAS em AlunoVagasAbertas.jsx).| Bruno|
+| Re-implementar as simulações de login e formulários com alert() e useNavigate.| Todos|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- Como vamos gerenciar o estado global (ex: o usuário logado) no futuro? O React Context é o próximo passo?
+- O style.css (para o VagaModal) e o index.css (global) podem causar confusão. Devemos unificá-los?
+
+#### Riscos Encontrados
+
+- A lógica de useState para múltiplos modais na mesma página (ex: LoginAlunoPage com Cadastro e Esqueci Senha) pode ficar complexa de gerenciar.
+- O "Prop drilling" (passar onClose para os modais) está simples agora, mas pode ser um problema se a aplicação crescer.
+
+#### Pontos Positivos
+
+- A aplicação está 100% componentizada. O reuso de código (Modais, Layouts) é excelente.
+- O roteamento com react-router-dom é limpo e torna a navegação instantânea.
+- O uso de useState para controlar filtros, modais e formulários é muito mais declarativo e fácil de manter do que o JS puro.
+- A estrutura de pastas (pages, components) está bem organizada.
+
+#### Pontos Negativos
+
+- A aplicação ainda depende de `alert()`s para simular ações de back-end.
+- Todos os dados (vagas, candidatos) ainda estão mocados dentro dos arquivos .jsx, não vêm de uma fonte externa.
+- Não há autenticação real ou rotas protegidas; qualquer um pode acessar /aluno/vagas diretamente pela URL.
+
+#### O que podemos melhorar?
+
+- A próxima Sprint deve focar em substituir todos os `alert()`s e dados mocados por integrações de API reais.
+- Implementar um gerenciador de estado global (ex: Context API) para autenticação.
+- Criar Rotas Protegidas que verifiquem se o usuário está logado antes de renderizar os Layouts.
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (React, JSX), Vite
+- Pacotes: react-router-dom
