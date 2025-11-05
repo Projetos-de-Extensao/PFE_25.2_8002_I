@@ -171,7 +171,7 @@ title: Sprint Planning
 
 #### O que podemos melhorar?
 
-- Separar a lógica no `script.js` por "página" ou "contexto" (ex: lógica de login, lógica do painel do aluno).
+- Separar a lógica no `script.js` por "página" ou "contexto" (ex:lógica do painel do aluno,lógica de login).
 - Focar na próxima Sprint em popular os modais complexos com dados dinâmicos.
 
 #### Ferramentas utilizadas
