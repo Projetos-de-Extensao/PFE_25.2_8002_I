@@ -119,3 +119,62 @@ title: Sprint Planning
 
 - Reunião: Google Meet
 - Desenvolvimento: Visual Studio Code (HTML/CSS)
+
+# Sprint III (Basic Interactivity - JS)
+
+> 01/10/2025 à 08/10/2025
+
+## Planejamento de Interação
+
+* **Objetivo da Sprint:** Adicionar interatividade básica ao protótipo com JavaScript. Isso inclui simulação de login, navegação e a funcionalidade de modais simples e do formulário de perfil.
+
+* **Presentes na reunião:**
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+| Criar o `script.js` e a função helper `setupModal` para abrir/fechar modais.| Gabriel|
+| Implementar a simulação de login (aluno e coordenador) com redirecionamento de página.| Bruno|
+| Conectar os modais de "Esqueci a Senha" e "Criar Conta" e simular o envio de formulário com `alert()`.| Pedro|
+| Implementar a lógica de "Editar Perfil" na página `aluno_perfil.html` (alternar `disabled` e texto do botão).| Iago|
+| Conectar o botão "Criar Nova Vaga" (`coord_dashboard.html` e `coord_vagas.html`) para abrir o modal.| Gabriel|
+| Simular a submissão do formulário "Criar Vaga" com `alert()` e fechar o modal.| Bruno|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- A lógica de "Editar Perfil" está clara para o usuário (botão mudar de "Editar" para "Salvar")?
+- Estamos usando `alert()` demais? Quando devemos trocar por algo mais elegante?
+
+#### Riscos Encontrados
+
+- O `script.js` pode crescer rapidamente e ficar desorganizado, misturando lógicas de páginas diferentes.
+
+#### Pontos Positivos
+
+- O protótipo agora é navegável e interativo. Os fluxos de login e cadastro podem ser testados.
+- A função `setupModal` se provou muito útil e evitou repetição de código.
+- A funcionalidade de "Editar Perfil" (toggle) funciona muito bem.
+
+#### Pontos Negativos
+
+- Os modais de "Ver Detalhes" (aluno) e "Gerenciar" (coordenador) ainda não funcionam e estão quebrando a experiência.
+- Todos os modais ainda contêm dados estáticos ou estão vazios.
+
+#### O que podemos melhorar?
+
+- Separar a lógica no `script.js` por "página" ou "contexto" (ex: lógica de login, lógica do painel do aluno).
+- Focar na próxima Sprint em popular os modais complexos com dados dinâmicos.
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (HTML/CSS, JavaScript)
