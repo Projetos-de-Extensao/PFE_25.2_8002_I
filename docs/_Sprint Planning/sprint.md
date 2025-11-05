@@ -44,7 +44,7 @@ title: Sprint Planning
 #### Pontos Positivos
 
 - O time se alinhou rapidamente sobre a visão e o problema principal do projeto.
-- As entrevistas com os alunos foram muito ricas e trouxeram insights valiosos.
+- As entrevistas com os alunos foram muito ricas e trazem insights valiosos.
 
 #### Pontos Negativos
 
@@ -178,3 +178,61 @@ title: Sprint Planning
 
 - Reunião: Google Meet
 - Desenvolvimento: Visual Studio Code (HTML/CSS, JavaScript)
+
+# Sprint IV (Dynamic Data Simulation - JS)
+
+> 09/10/2025 à 16/10/2025
+
+## Planejamento de Interação
+
+* **Objetivo da Sprint:** Finalizar o protótipo funcional simulando um back-end. Isso envolve criar dados "mockados" e usá-los para popular dinamicamente os modais de "Detalhes da Vaga" e "Gerenciar Candidatos", implementando as ações principais.
+
+* **Presentes na reunião:**
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+| Criar a estrutura `dadosSimulados` (vagas, candidatos) e o objeto `Template` no `script.js`.| Gabriel|
+| Implementar a função `abrirModalDetalhesVaga` para carregar dados de `dadosSimulados.vagas`.| Bruno|
+| Implementar a ação do botão "Quero me candidatar" (simulação com `alert()`).| Bruno|
+| Implementar a função `abrirModalGerenciarCandidatos` para carregar dados de `dadosSimulados.candidatos` e gerar a tabela.| Pedro|
+| Implementar as ações "Aprovar" e "Rejeitar" no modal de gerenciamento (simulação com `alert()` e remoção do item da tabela).| Iago|
+| Revisão final dos fluxos e interações do protótipo.| Todos|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- Os `dadosSimulados` são suficientes para cobrir todos os casos de teste (ex: vaga sem candidatos)?
+- A remoção do item da tabela após aprovar/rejeitar é a melhor forma de dar feedback?
+
+#### Riscos Encontrados
+
+- O protótipo está tão funcional que pode ser confundido com o produto final, gerando expectativas irreais sobre a rapidez do desenvolvimento "real" (com back-end).
+
+#### Pontos Positivos
+
+- O protótipo está 100% funcional e simula o fluxo completo da aplicação.
+- A geração dinâmica de HTML pelos `Templates` funcionou perfeitamente e tornou o código limpo.
+- As interações de "Aprovar" e "Rejeitar" dão uma sensação muito realista de gerenciamento.
+
+#### Pontos Negativos
+
+- A página de "Minhas Candidaturas" (`aluno_candidaturas.html`) ainda está com dados estáticos no HTML, não refletindo as ações do coordenador. (Nota: Isso foi identificado como uma melhoria para um próximo ciclo).
+
+#### O que podemos melhorar?
+
+- Em um próximo ciclo, poderíamos fazer a página `aluno_candidaturas.html` refletir os dados simulados, mas para o escopo do protótipo atual, o objetivo foi atingido.
+- O protótipo está pronto para ser usado em testes de usabilidade com usuários reais.
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (JavaScript)
