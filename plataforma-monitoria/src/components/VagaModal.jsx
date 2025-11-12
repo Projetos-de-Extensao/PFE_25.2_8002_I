@@ -1,37 +1,47 @@
-// src/components/VagaModal.jsx
-
 import React from 'react';
-import './style.css'; // Vamos criar este CSS em breve
 
-// O 'vaga' é o objeto da vaga que foi clicada
-// O 'onClose' é a função que será chamada para fechar o modal
 export default function VagaModal({ vaga, onClose }) {
+  
+  const dadosEstaticos = {
+    prazo: '30/11/2025',
+    preRequisitos: 'CR > 7.0, Aprovado na matéria base.',
+    descricao: 'Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.'
+  };
+
   return (
-    // O Fundo escuro (overlay)
-    <div className="modal-overlay" onClick={onClose}>
-      {/* Evita que o clique no conteúdo feche o modal */}
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+    <div className="modal" style={{ display: 'block' }} onClick={onClose}>
+      
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         
-        {/* Botão de Fechar (X) */}
-        <button className="modal-close-btn" onClick={onClose}>
-          &times;
-        </button>
+        <span className="close-btn" onClick={onClose}>&times;</span>
 
-        <h2>{vaga.materia}</h2>
-        <p><strong>Professor Responsável:</strong> {vaga.professor}</p>
-        <p><strong>Prazo Final:</strong> {vaga.prazo}</p>
+        {/* --- Dados Dinâmicos (da API) --- */}
+        <h2>{vaga.nome}</h2> 
+        
+        <p><strong>Professor Responsável:</strong> {vaga.professor_nome}</p>
 
+        {/* --- Dados Estáticos (Fixos) --- */}
+        <p><strong>Prazo Final:</strong> {dadosEstaticos.prazo}</p>
+
+        {/* --- Dados Dinâmicos (da API) --- */}
+        <p><strong>Código:</strong> {vaga.codigo}</p>
+        <p><strong>Curso:</strong> {vaga.curso_nome}</p>
+
+        {/* --- Dados Estáticos (Fixos) --- */}
         <div className="modal-section">
           <h3>Pré-requisitos</h3>
-          <p>{vaga.preRequisitos}</p>
+          <p>{dadosEstaticos.preRequisitos}</p>
         </div>
 
         <div className="modal-section">
           <h3>Descrição das Atividades</h3>
-          <p>{vaga.descricao}</p>
+          <p>{dadosEstaticos.descricao}</p>
         </div>
 
-        <button className="modal-apply-btn">
+        <button 
+          className="btn btn-primary btn-full" 
+          style={{marginTop: '20px'}}
+        >
           Quero me candidatar
         </button>
       </div>
