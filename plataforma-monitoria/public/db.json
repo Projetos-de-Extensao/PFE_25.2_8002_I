@@ -1,0 +1,94 @@
+{
+    "Vagas": [
+        {
+            "codigoCurso": "CC001",
+            "nomeCurso": "Ciência da Computação",
+            "disciplinas": [
+                {
+                    "nomeDisciplina": "Algoritmos e Estruturas de Dados",
+                    "professorResponsavel": "Dr. Carlos Silva"
+                },
+                {
+                    "nomeDisciplina": "Banco de Dados",
+                    "professorResponsavel": "Dra. Maria Santos"
+                },
+                {
+                    "nomeDisciplina": "Programação Web",
+                    "professorResponsavel": "Prof. João Costa"
+                }
+            ]
+        },
+        {
+            "codigoCurso": "ENG002",
+            "nomeCurso": "Engenharia de Software",
+            "disciplinas": [
+                {
+                    "nomeDisciplina": "Engenharia de Requisitos",
+                    "professorResponsavel": "Dr. Pedro Oliveira"
+                },
+                {
+                    "nomeDisciplina": "Testes de Software",
+                    "professorResponsavel": "Dra. Ana Ferreira"
+                },
+                {
+                    "nomeDisciplina": "Arquitetura de Sistemas",
+                    "professorResponsavel": "Prof. Lucas Mendes"
+                }
+            ]
+        },
+        {
+            "codigoCurso": "ADS003",
+            "nomeCurso": "Análise e Desenvolvimento de Sistemas",
+            "disciplinas": [
+                {
+                    "nomeDisciplina": "Desenvolvimento Mobile",
+                    "professorResponsavel": "Dr. Rafael Gomes"
+                },
+                {
+                    "nomeDisciplina": "API REST",
+                    "professorResponsavel": "Dra. Juliana Rocha"
+                },
+                {
+                    "nomeDisciplina": "Cloud Computing",
+                    "professorResponsavel": "Prof. Marcelo Dias"
+                }
+            ]
+        },
+        {
+            "codigoCurso": "RD004",
+            "nomeCurso": "Redes de Computadores",
+            "disciplinas": [
+                {
+                    "nomeDisciplina": "Segurança de Redes",
+                    "professorResponsavel": "Dr. Bruno Martins"
+                },
+                {
+                    "nomeDisciplina": "Protocolos de Comunicação",
+                    "professorResponsavel": "Dra. Fernanda Lima"
+                },
+                {
+                    "nomeDisciplina": "Infraestrutura de TI",
+                    "professorResponsavel": "Prof. Roberto Alves"
+                }
+            ]
+        },
+        {
+            "codigoCurso": "IA005",
+            "nomeCurso": "Inteligência Artificial",
+            "disciplinas": [
+                {
+                    "nomeDisciplina": "Machine Learning",
+                    "professorResponsavel": "Dr. Gustavo Nunes"
+                },
+                {
+                    "nomeDisciplina": "Processamento de Linguagem Natural",
+                    "professorResponsavel": "Dra. Camila Pereira"
+                },
+                {
+                    "nomeDisciplina": "Visão Computacional",
+                    "professorResponsavel": "Prof. Felipe Barbosa"
+                }
+            ]
+        }
+    ]
+}

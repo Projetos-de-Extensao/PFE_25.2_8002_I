@@ -1,60 +1,65 @@
+// src/pages/aluno/AlunoVagasAbertas.jsx
+
 import React, { useState, useEffect } from 'react';
 import VagaModal from '../../components/VagaModal'; 
 
-const API_CURSOS_URL = 'https://plataformacasa-a2a3d2abfd5e.herokuapp.com/api/cursos/';
-const API_DISCIPLINAS_URL = 'https://plataformacasa-a2a3d2abfd5e.herokuapp.com/api/disciplinas/';
-const API_FUNCIONARIOS_URL = 'https://plataformacasa-a2a3d2abfd5e.herokuapp.com/api/funcionarios/';
+// ATUALIZADO: URL da nossa API local
+const API_URL = '/db.json'; // O arquivo que você colocou na pasta /public
 
 export default function AlunoVagasAbertas() {
-  const [vagas, setVagas] = useState([]);
-  const [cursos, setCursos] = useState([]);
+  // Estados para os dados da API
+  const [vagas, setVagas] = useState([]);      // <-- A lista "achatada" de disciplinas
+  const [cursos, setCursos] = useState([]);    // <-- A lista de cursos para o filtro
+  
+  // Estados de controle
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   
+  // Estados dos filtros e modal
   const [filtroCurso, setFiltroCurso] = useState('Todos os Cursos');
   const [filtroMateria, setFiltroMateria] = useState('');
   const [modalVisivel, setModalVisivel] = useState(false);
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
 
+  // Hook para buscar dados no carregamento
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [cursosResponse, disciplinasResponse, funcionariosResponse] = await Promise.all([
-          fetch(API_CURSOS_URL),
-          fetch(API_DISCIPLINAS_URL),
-          fetch(API_FUNCIONARIOS_URL)
-        ]);
+        // ATUALIZADO: Buscamos apenas uma API
+        const response = await fetch(API_URL);
 
-        if (!cursosResponse.ok || !disciplinasResponse.ok || !funcionariosResponse.ok) {
-          throw new Error('Falha ao buscar dados das APIs');
+        if (!response.ok) {
+          throw new Error('Falha ao buscar db.json');
         }
 
-        const cursosData = await cursosResponse.json();
-        const disciplinasData = await disciplinasResponse.json();
-        const funcionariosData = await funcionariosResponse.json();
-
-        //LÓGICA DE MESCLAGEM DE DADOS
-        const listaDisciplinas = disciplinasData.results || disciplinasData;
+        const data = await response.json();
         
-        //Filtramos a lista para pegar apenas os professores
-        const listaProfessores = (funcionariosData.results || funcionariosData)
-          .filter(func => func.tipo_usuario_nome === 'Professor');
-
-        if (!listaProfessores || listaProfessores.length === 0) {
-          throw new Error('Não foi possível carregar os professores.');
-        }
-
-        const vagasComProfessores = listaDisciplinas.map((disciplina, index) => {
-          const professorAtribuido = listaProfessores[index % listaProfessores.length];
-
-          return {
-            ...disciplina, 
-            professor_nome: professorAtribuido.nome 
-          };
-        });
+        // --- LÓGICA DE PROCESSAMENTO DE DADOS ---
+        // data.Vagas é a lista de cursos (ex: [{nomeCurso: "Engenharia...", disciplinas: [...]}, ...])
+        const cursosDaAPI = data.Vagas || [];
         
-        setCursos(cursosData.results || cursosData);
-        setVagas(vagasComProfessores);
+        // 1. Criamos a lista de cursos para o filtro
+        setCursos(cursosDaAPI);
+
+        // 2. Criamos a lista "achatada" de vagas (disciplinas)
+        // Usamos flatMap para transformar um array de cursos (com disciplinas aninhadas)
+        // em um único array de disciplinas, onde cada disciplina sabe qual é o seu curso.
+        const vagasProcessadas = cursosDaAPI.flatMap(curso => (
+          curso.disciplinas.map(disciplina => ({
+            // Criamos um ID único para o React (ex: "CC001-Banco de Dados")
+            id: `${curso.codigoCurso}-${disciplina.nomeDisciplina}`,
+            
+            // Dados da disciplina
+            nome: disciplina.nomeDisciplina,
+            professor_nome: disciplina.professorResponsavel,
+            
+            // Dados do curso "pai"
+            curso_nome: curso.nomeCurso,
+            curso_codigo: curso.codigoCurso
+          }))
+        ));
+        
+        setVagas(vagasProcessadas);
 
       } catch (err) {
         setError(err.message);
@@ -66,16 +71,20 @@ export default function AlunoVagasAbertas() {
     fetchData();
   }, []); 
 
+  // --- LÓGICA DE FILTRAGEM (Atualizada para os novos nomes) ---
   const vagasFiltradas = vagas
     .filter(vaga => {
+      // 1. Filtro de Curso
       if (filtroCurso === 'Todos os Cursos') return true;
-      return vaga.curso_nome === filtroCurso; 
+      return vaga.curso_nome === filtroCurso; // Compara com o nome do curso que adicionamos
     })
     .filter(vaga => {
+      // 2. Filtro de Matéria
       return vaga.nome.toLowerCase().includes(filtroMateria.toLowerCase());
     });
 
   
+  // --- Funções do Modal (sem alteração) ---
   const handleVerDetalhes = (vaga) => {
     setVagaSelecionada(vaga);
     setModalVisivel(true);
@@ -86,7 +95,7 @@ export default function AlunoVagasAbertas() {
     setVagaSelecionada(null);
   };
 
-  // Renderização (Carregando...)
+  // --- Renderização (Carregando...) ---
   if (isLoading) {
     return (
       <div className="content-section">
@@ -96,7 +105,7 @@ export default function AlunoVagasAbertas() {
     );
   }
 
-  // Renderização (Erro)
+  // --- Renderização (Erro) ---
   if (error) {
     return (
       <div className="content-section">
@@ -106,12 +115,12 @@ export default function AlunoVagasAbertas() {
     );
   }
 
-  // Renderização (Sucesso)
+  // --- Renderização (Sucesso) ---
   return (
     <div className="content-section">
       <h2>Vagas Abertas</h2>
       
-      {/* Filtros (sem alteração) */}
+      {/* --- Filtros --- */}
       <div className="filtros-container">
         <div className="input-group">
           <label htmlFor="filtro-curso">Filtrar por Curso</label>
@@ -121,9 +130,11 @@ export default function AlunoVagasAbertas() {
             onChange={(e) => setFiltroCurso(e.target.value)}
           >
             <option>Todos os Cursos</option>
+            
+            {/* ATUALIZADO: Lendo a lista de cursos do estado 'cursos' */}
             {cursos.map(curso => (
-              <option key={curso.id} value={curso.nome}>
-                {curso.nome}
+              <option key={curso.codigoCurso} value={curso.nomeCurso}>
+                {curso.nomeCurso}
               </option>
             ))}
           </select>
@@ -133,24 +144,25 @@ export default function AlunoVagasAbertas() {
           <input 
             type="text" 
             id="filtro-busca"
-            placeholder="Ex: Estruturas de Dados"
+            placeholder="Ex: Banco de Dados"
             value={filtroMateria}
             onChange={(e) => setFiltroMateria(e.target.value)}
           />
         </div>
       </div>
       
-      {/* Lista de Vagas (Cards) */}
+      {/* --- Lista de Vagas (Cards) --- */}
       <div className="lista-vagas">
         {vagasFiltradas.length > 0 ? (
           vagasFiltradas.map(vaga => (
             <div className="vaga-card" key={vaga.id}>
               <div className="vaga-card-info">
                 
+                {/* ATUALIZADO: Usando os nomes do objeto 'vaga' processado */}
                 <h3>{vaga.nome}</h3> 
                 <p>Professor: {vaga.professor_nome}</p> 
                 
-                {/* ATUALIZADO (Bug 3): Data corrigida */}
+                {/* Mantendo o prazo estático como antes */}
                 <p>Prazo para inscrição: 30/11/2025</p>
                 
               </div>
@@ -167,7 +179,7 @@ export default function AlunoVagasAbertas() {
         )}
       </div>
 
-      {/* Renderização do Modal */}
+      {/* --- Renderização do Modal --- */}
       {modalVisivel && (
         <VagaModal 
           vaga={vagaSelecionada} 
