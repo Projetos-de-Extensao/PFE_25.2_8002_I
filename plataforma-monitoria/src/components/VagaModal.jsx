@@ -1,4 +1,3 @@
-// src/components/VagaModal.jsx
 import React from 'react';
 
 export default function VagaModal({ vaga, onClose }) {
@@ -9,19 +8,19 @@ export default function VagaModal({ vaga, onClose }) {
     descricao: 'Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.'
   };
 
-  // Função para fechar o modal ao clicar no fundo
+  //Função para fechar o modal ao clicar no fundo
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  // ATUALIZADO: Criamos a função para o botão "Candidatar"
+  //Adicionando função para o botão "Candidatar"
   const handleApply = () => {
-    // 1. Mostra um alerta para simular o envio
+    //Mostra um alerta para simular o envio
     alert(`Candidatura para a vaga "${vaga.nome}" enviada com sucesso! (Simulado)`);
     
-    // 2. Fecha o modal
+    //Fecha o modal
     onClose();
   };
 
@@ -29,7 +28,6 @@ export default function VagaModal({ vaga, onClose }) {
     <div className="modal" style={{ display: 'block' }} onClick={handleOverlayClick}>
       <div className="modal-content">
         
-        {/* Este botão fecha o modal */}
         <span className="close-btn" onClick={onClose}>&times;</span>
 
         <h2>{vaga.nome}</h2> 
@@ -49,7 +47,6 @@ export default function VagaModal({ vaga, onClose }) {
           <p>{dadosEstaticos.descricao}</p>
         </div>
 
-        {/* ATUALIZADO: Adicionamos o evento onClick={handleApply} ao botão */}
         <button 
           className="btn btn-primary btn-full" 
           style={{marginTop: '20px'}}
