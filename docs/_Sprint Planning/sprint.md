@@ -304,3 +304,66 @@ title: Sprint Planning
 - Reunião: Google Meet
 - Desenvolvimento: Visual Studio Code (React, JSX), Vite
 - Pacotes: react-router-dom
+
+# Sprint VI (API Integration & Local Data)
+
+> 06/11/2025 à 12/11/2025
+
+## Planejamento de Interação
+
+* *Objetivo da Sprint:* Substituir todos os dados "mockados" (estáticos) da aplicação por dados reais. Iniciar com a integração de APIs externas (Heroku) e, em seguida, pivotar para um `db.json` local para estabilizar o ambiente de desenvolvimento.
+
+* *Presentes na reunião:*
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+|Substituir os dados mocados (`DADOS_VAGAS`) pelo hook `useEffect` para buscar dados de APIs externas.| Bruno|
+|Integrar as 3 APIs (cursos, disciplinas, funcionarios) usando `Promise.all`.| Gabriel|
+|Implementar a lógica de mesclagem para atribuir um "Professor" (`funcionarios`) a cada "Disciplina", corrigindo o filtro para `tipo_usuario_nome`.| Iago|
+|Refatorar a busca de dados para usar um `db.json` local (armazenado na pasta `/public`).| Bruno|
+|Implementar a lógica `flatMap` para processar a estrutura aninhada do `db.json` (Vagas -> disciplinas) e popular as listas de vagas e cursos.| Gabriel|
+|Atualizar os componentes `AlunoVagasAbertas` e `VagaModal` para usar os novos nomes de propriedades (ex: `nomeDisciplina`, `professorResponsavel`).| Pedro|
+|Corrigir bugs de UI pós-integração (estilo do modal CSS e `onClick` do botão "Quero me candidatar").| Todos|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- A lógica `flatMap` para "achatar" o JSON aninhado está clara para todos os membros?
+- Como lidamos com dados que a API não fornece (ex: "Prazo"), mas a UI precisa? (Decisão: Manter estático no componente).
+
+#### Riscos Encontrados
+
+- As APIs externas do Heroku estavam lentas ou "dormindo", tornando o desenvolvimento inicial instável.
+- A estrutura de dados das APIs externas era muito diferente da estrutura final do `db.json`, o que exigiu duas refatorações significativas na forma como os componentes liam as `props`.
+
+#### Pontos Positivos
+
+- A aplicação agora é 100% orientada a dados, sem nenhum dado estático (exceto os placeholders deliberados no modal).
+- A mudança para o `db.json` local tornou o desenvolvimento instantâneo, estável e independente de internet.
+- A lógica de `flatMap` para processar o JSON aninhado é muito eficiente e limpa.
+- O filtro de vagas (por curso e por matéria) agora funciona com os dados reais.
+
+#### Pontos Negativos
+
+- Gastamos tempo integrando 3 APIs externas que foram descartadas em favor do `db.json`. (Nota: Considerado um bom exercício de aprendizado).
+- Os botões "Quero me candidatar" e "Aprovar" ainda são simulações (`alert()`); eles não alteram o `db.json`.
+
+#### O que podemos melhorar?
+
+- A próxima Sprint deve focar em substituir o `fetch` estático do `db.json` pelo `json-server` (ou uma ferramenta similar) para permitir a simulação de requisições POST/PUT/DELETE, fazendo com que a candidatura seja "salva".
+- Definir uma "interface" (um contrato de dados) para o que o front-end espera, para evitar refatorações caso a API mude novamente.
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (React, JSX)
+- API: `fetch` API, `db.json` (Arquivo estático)
