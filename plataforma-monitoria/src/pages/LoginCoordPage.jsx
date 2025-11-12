@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// --- COMPONENTE DO MODAL: ESQUECI A SENHA ---
+// COMPONENTE DO MODAL: ESQUECI A SENHA
 const ModalEsqueci = ({ onClose }) => {
   
   const handleSubmit = (e) => {
@@ -27,7 +27,7 @@ const ModalEsqueci = ({ onClose }) => {
 };
 
 
-// --- PÁGINA PRINCIPAL DE LOGIN DO COORDENADOR ---
+// PÁGINA PRINCIPAL DE LOGIN DO COORDENADOR
 export default function LoginCoordPage() {
   // 1. Estado para controlar o modal
   const [isEsqueciOpen, setIsEsqueciOpen] = useState(false);

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Identifica a página atual pelo ID do body
     const pageId = document.body.id;
 
-    // --- LÓGICA DA PÁGINA DE LOGIN DO ALUNO ---
+    // LÓGICA DA PÁGINA DE LOGIN DO ALUNO
     if (pageId === 'page-login-aluno') {
         const loginForm = document.getElementById('login-aluno-form');
         
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- LÓGICA DA PÁGINA DE LOGIN DO COORDENADOR ---
+    // LÓGICA DA PÁGINA DE LOGIN DO COORDENADOR
     if (pageId === 'page-login-coord') {
         const loginForm = document.getElementById('login-coord-form');
         
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // --- LÓGICA GERAL DOS PAINÉIS (Modais) ---
+    // LÓGICA GERAL DOS PAINÉIS (Modais)
 
     // Modal Detalhes da Vaga (Aluno)
     const modalDetalhes = document.getElementById('modal-detalhes-vaga');
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     
-    // --- LÓGICA DA PÁGINA DE PERFIL DO ALUNO ---
+    //LÓGICA DA PÁGINA DE PERFIL DO ALUNO
     const perfilForm = document.getElementById('perfil-form');
     if (perfilForm) {
         const btnToggleEdit = document.getElementById('btn-toggle-edit');
@@ -151,13 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const isEditing = btnToggleEdit.textContent === 'Salvar Alterações';
 
             if (isEditing) {
-                // --- MODO SALVAR ---
-                // (Simula o salvamento)
+                //MODO SALVAR
+                //(Simula o salvamento)
                 btnToggleEdit.textContent = 'Editar Perfil';
                 btnToggleEdit.classList.remove('btn-success'); // Remove a cor verde
                 btnToggleEdit.classList.add('btn-primary'); // Volta a ser azul
 
-                // Desabilita todos os campos editáveis
+                //Desabilita todos os campos editáveis
                 profileInputs.forEach(input => {
                     input.disabled = true;
                 });
@@ -165,17 +165,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert('Perfil salvo com sucesso!');
 
             } else {
-                // --- MODO EDITAR ---
+                //MODO EDITAR
                 btnToggleEdit.textContent = 'Salvar Alterações';
                 btnToggleEdit.classList.remove('btn-primary');
                 btnToggleEdit.classList.add('btn-success'); // Fica verde para "Salvar"
 
-                // Habilita todos os campos editáveis
                 profileInputs.forEach(input => {
                     input.disabled = false;
                 });
                 
-                // Foca no primeiro campo que ficou editável
                 if (profileInputs.length > 0) {
                     profileInputs[0].focus(); 
                 }
@@ -185,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// --- FUNÇÃO HELPER PARA MODAIS ---
 function setupModal(triggerId, modalId, closeId) {
     const trigger = document.getElementById(triggerId);
     const modal = document.getElementById(modalId);
@@ -197,7 +194,7 @@ function setupModal(triggerId, modalId, closeId) {
     }
 }
 
-// --- DADOS SIMULADOS E TEMPLATES (Apenas para Modais) ---
+//DADOS SIMULADOS E TEMPLATES
 
 const dadosSimulados = {
     vagas: [
@@ -205,7 +202,6 @@ const dadosSimulados = {
         { id: 'v2', materia: 'Métodos Quantitativos', professor: 'Prof. Carlos', prazo: '28/10/2025', inscritos: 5, requisitos: 'Aprovado em Estrutura de Dados. Conhecimento em Python.', descricao: 'Apoio no desenvolvimento do projeto final da disciplina e correção de trabalhos.' },
         { id: 'v3', materia: 'Matemática Discreta', professor: 'Profa. Beatriz', prazo: '05/11/2025', inscritos: 1, requisitos: 'CR > 8.0.', descricao: 'Suporte em laboratórios de Stata/R.' }
     ],
-    // ATUALIZADO AQUI
     candidatos: [
         { nome: 'Bruno Norton', curso: 'Eng. Computação', cr: 8.5 },
         { nome: 'João Vitor', curso: 'Eng. Computação', cr: 7.9 },
@@ -213,7 +209,7 @@ const dadosSimulados = {
     ]
 };
 
-// Objeto para guardar os templates HTML (Apenas dos Modais)
+//Objeto para guardar os templates HTML
 const Template = {
     Aluno: {
         detalhesVaga: (vaga) => `

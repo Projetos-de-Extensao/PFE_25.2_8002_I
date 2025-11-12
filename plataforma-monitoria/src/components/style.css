@@ -1,6 +1,6 @@
 /* src/components/style.css */
 
-/* --- Seção Principal --- */
+/* Seção Principal */
 .content-section {
   padding: 24px;
   background-color: #fff;
@@ -13,7 +13,7 @@
   color: #003366; /* Azul escuro */
 }
 
-/* --- Barra de Filtro --- */
+/* Barra de Filtro */
 .filter-bar {
   display: flex;
   gap: 20px;
@@ -45,7 +45,7 @@
   min-width: 200px;
 }
 
-/* --- Lista de Vagas --- */
+/* Lista de Vagas */
 .vagas-lista {
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@
 }
 
 
-/* --- Estilos do Modal --- */
+/* Estilos do Modal */
 .modal-overlay {
   position: fixed;
   top: 0;

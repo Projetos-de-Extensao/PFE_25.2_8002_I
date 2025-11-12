@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// --- COMPONENTE DO MODAL: CADASTRO ---
+// COMPONENTE DO MODAL: CADASTRO
 // (Definido aqui para simplicidade, mas poderia ser um arquivo separado)
 const ModalCadastro = ({ onClose }) => {
   
@@ -31,7 +31,7 @@ const ModalCadastro = ({ onClose }) => {
   );
 };
 
-// --- COMPONENTE DO MODAL: ESQUECI A SENHA ---
+// COMPONENTE DO MODAL: ESQUECI A SENHA
 const ModalEsqueci = ({ onClose }) => {
   
   const handleSubmit = (e) => {
@@ -56,7 +56,7 @@ const ModalEsqueci = ({ onClose }) => {
 };
 
 
-// --- PÁGINA PRINCIPAL DE LOGIN DO ALUNO ---
+// PÁGINA PRINCIPAL DE LOGIN DO ALUNO
 export default function LoginAlunoPage() {
   // 1. Estados para controlar cada modal (fechados por padrão)
   const [isCadastroOpen, setIsCadastroOpen] = useState(false);

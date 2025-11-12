@@ -10,7 +10,7 @@ hide:
 <div class="grid cards" style="grid-template-columns: repeat(2, 1fr); background: var(--md-default-bg-color);" markdown>
 -   :material-github:{ .lg .right } __PFE_25.2_8002_I__
 
-    ---
+   
 
     Bruno Norton, Gabriel Pereira, Iago Viana, Pedro dos Santos
 

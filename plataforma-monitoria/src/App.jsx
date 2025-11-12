@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   { path: "/login-aluno", element: <LoginAlunoPage /> },
   { path: "/login-coord", element: <LoginCoordPage /> },
   
-  // --- Rotas do Aluno (com layout compartilhado) ---
+  // Rotas do Aluno (com layout compartilhado)
   {
     path: "/aluno",
     element: <AlunoLayout />, // O layout com header e sidebar do aluno
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     ],
   },
   
-  // --- Rotas do Coordenador (com layout compartilhado) ---
+  // Rotas do Coordenador (com layout compartilhado)
   {
     path: "/coord",
     element: <CoordLayout />, // O layout com header e sidebar do coord

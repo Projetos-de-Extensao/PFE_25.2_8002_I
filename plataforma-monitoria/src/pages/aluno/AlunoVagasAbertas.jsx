@@ -33,10 +33,10 @@ export default function AlunoVagasAbertas() {
         const disciplinasData = await disciplinasResponse.json();
         const funcionariosData = await funcionariosResponse.json();
 
-        // --- LÓGICA DE MESCLAGEM DE DADOS ---
+        //LÓGICA DE MESCLAGEM DE DADOS
         const listaDisciplinas = disciplinasData.results || disciplinasData;
         
-        // ATUALIZADO (Bug 2): Filtramos a lista para pegar APENAS professores
+        //Filtramos a lista para pegar apenas os professores
         const listaProfessores = (funcionariosData.results || funcionariosData)
           .filter(func => func.tipo_usuario_nome === 'Professor');
 
@@ -86,7 +86,7 @@ export default function AlunoVagasAbertas() {
     setVagaSelecionada(null);
   };
 
-  // --- Renderização (Carregando...) ---
+  // Renderização (Carregando...)
   if (isLoading) {
     return (
       <div className="content-section">
@@ -96,7 +96,7 @@ export default function AlunoVagasAbertas() {
     );
   }
 
-  // --- Renderização (Erro) ---
+  // Renderização (Erro)
   if (error) {
     return (
       <div className="content-section">
@@ -106,12 +106,12 @@ export default function AlunoVagasAbertas() {
     );
   }
 
-  // --- Renderização (Sucesso) ---
+  // Renderização (Sucesso)
   return (
     <div className="content-section">
       <h2>Vagas Abertas</h2>
       
-      {/* --- Filtros (sem alteração) --- */}
+      {/* Filtros (sem alteração) */}
       <div className="filtros-container">
         <div className="input-group">
           <label htmlFor="filtro-curso">Filtrar por Curso</label>
@@ -140,7 +140,7 @@ export default function AlunoVagasAbertas() {
         </div>
       </div>
       
-      {/* --- Lista de Vagas (Cards) --- */}
+      {/* Lista de Vagas (Cards) */}
       <div className="lista-vagas">
         {vagasFiltradas.length > 0 ? (
           vagasFiltradas.map(vaga => (
@@ -167,7 +167,7 @@ export default function AlunoVagasAbertas() {
         )}
       </div>
 
-      {/* --- Renderização do Modal --- */}
+      {/* Renderização do Modal */}
       {modalVisivel && (
         <VagaModal 
           vaga={vagaSelecionada} 

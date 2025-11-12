@@ -1,4 +1,4 @@
-/* --- GERAL E RESET --- */
+/* GERAL E RESET */
 :root {
     --cor-primaria: #004a91; /* Azul Ibmec */
     --cor-secundaria: #fdb913; /* Amarelo Ibmec */
@@ -34,7 +34,7 @@ body {
     padding: 20px;
 }
 
-/* --- PÁGINA DE LOGIN ATUALIZADA --- */
+/* PÁGINA DE LOGIN ATUALIZADA */
 .login-body {
     background: linear-gradient(135deg, var(--cor-primaria) 0%, #003a70 100%);
     display: flex;
@@ -94,7 +94,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* --- (NOVO) Estilos da Seleção de Perfil (index.html) --- */
+/* (NOVO) Estilos da Seleção de Perfil (index.html) */
 .role-selection {
     padding: 40px 30px;
 }
@@ -129,7 +129,7 @@ body {
     font-size: 1.5rem;
     display: none; /* Escondido por enquanto. Substitua o '?' por um ícone img ou font-awesome */
 }
-/* --- Fim dos novos estilos --- */
+/* Fim dos novos estilos */
 
 
 .input-group {
@@ -216,7 +216,7 @@ body {
     text-decoration: underline;
 }
 
-/* --- LAYOUT PAINÉIS (ALUNO / COORDENADOR) --- */
+/* LAYOUT PAINÉIS (ALUNO / COORDENADOR) */
 .header {
     background-color: var(--cor-branco);
     border-bottom: 1px solid var(--cor-borda);
@@ -300,7 +300,7 @@ body {
     font-weight: 600;
 }
 
-/* --- COMPONENTES (Vagas, Tabelas, Filtros) --- */
+/* COMPONENTES (Vagas, Tabelas, Filtros) */
 .filtros-container {
     display: flex;
     gap: 15px;
@@ -377,7 +377,7 @@ body {
 .status-aprovado { background-color: var(--cor-sucesso); color: var(--cor-branco); }
 .status-rejeitado { background-color: var(--cor-rejeitado); color: var(--cor-branco); }
 
-/* --- MODAIS --- */
+/* MODAIS */
 .modal {
     display: none;
     position: fixed;

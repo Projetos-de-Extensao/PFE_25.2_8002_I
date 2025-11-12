@@ -30,7 +30,7 @@
   margin-bottom: 30px;
 }
 
-/* --- ALTERADO: Grid de Países com Media Queries --- */
+/* ALTERADO: Grid de Países com Media Queries */
 .country-grid {
   display: grid;
   gap: 25px; /* Espaçamento entre os cards */
@@ -53,7 +53,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* --- FIM DA ALTERAÇÃO --- */
+/* FIM DA ALTERAÇÃO */
 
 
 .filter-btn {
@@ -76,7 +76,7 @@
   background: #e74c3c;
 }
 
-/* --- ALTERADO: Card usa Flexbox para alinhamento vertical --- */
+/* ALTERADO: Card usa Flexbox para alinhamento vertical */
 .country-card {
   border: 1px solid #e1e8ed;
   border-radius: 15px;
@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: column; /* Organiza o conteúdo (header, info) em coluna */
 }
-/* --- FIM DA ALTERAÇÃO --- */
+/* FIM DA ALTERAÇÃO */
 
 .country-card.favorite {
   border-color: #e74c3c;
@@ -117,7 +117,7 @@
   transform: scale(1.2);
 }
 
-/* --- NOVO: Estilos para organizar as informações --- */
+/* NOVO: Estilos para organizar as informações */
 .country-info {
   flex-grow: 1; /* Faz esta seção crescer para preencher o card */
   display: flex;
@@ -135,10 +135,10 @@
   color: #555;
   flex-shrink: 0; /* Impede que o label "Capital:", etc. encolha */
 }
-/* --- FIM DO NOVO --- */
+/* FIM DO NOVO */
 
 
-/* --- ALTERADO: Badge sempre no final do card --- */
+/* ALTERADO: Badge sempre no final do card */
 .favorite-badge {
   color: #e74c3c;
   font-weight: bold;
@@ -150,4 +150,4 @@
   text-align: center;
   margin-top: 15px;
 }
-/* --- FIM DA ALTERAÇÃO --- */
+/* FIM DA ALTERAÇÃO */
