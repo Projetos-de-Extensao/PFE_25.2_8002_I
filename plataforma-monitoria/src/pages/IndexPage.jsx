@@ -15,7 +15,10 @@ export default function IndexPage() {
   return (
     <div className="login-container">
       <div className="logo">
-        <span className="logo-placeholder">Monitoria Ibmec</span>
+        <img 
+          src="/ibmecmonitoriaslogo.jpg"
+          alt="Logo Ibmec Monitorias" 
+        />
       </div>
       <div className="form-card role-selection">
         <h2>Bem-vindo!</h2>
