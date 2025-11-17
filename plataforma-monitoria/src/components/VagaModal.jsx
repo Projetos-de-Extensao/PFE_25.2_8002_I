@@ -1,14 +1,9 @@
-// src/components/VagaModal.jsx
 import React from 'react';
 
 export default function VagaModal({ vaga, onClose }) {
   
-  // Dados estáticos que não vêm da API
-  const dadosEstaticos = {
-    prazo: '30/11/2025',
-    preRequisitos: 'CR > 7.0, Aprovado na matéria base.',
-    descricao: 'Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.'
-  };
+  // ATUALIZADO: O prazo é o único dado que não vem da API
+  const prazoEstatico = '30/11/2025';
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -28,30 +23,25 @@ export default function VagaModal({ vaga, onClose }) {
         <span className="close-btn" onClick={onClose}>&times;</span>
 
         {/* --- Dados Dinâmicos (da API) --- */}
-        <h2>{vaga.nome}</h2> {/* Vem de nomeDisciplina */}
-        
-        <p><strong>Professor Responsável:</strong> {vaga.professor_nome}</p> {/* Vem de professorResponsavel */}
-        
-        {/* --- Dados Estáticos --- */}
-        <p><strong>Prazo Final:</strong> {dadosEstaticos.prazo}</p>
-        
-        {/* --- Dados Dinâmicos (da API) --- */}
-        {/* ATUALIZADO: Usando 'curso_codigo' que definimos */}
+        <h2>{vaga.nome}</h2>
+        <p><strong>Professor Responsável:</strong> {vaga.professor_nome}</p>
+        <p><strong>Prazo Final:</strong> {prazoEstatico}</p>
         <p><strong>Código:</strong> {vaga.curso_codigo}</p>
         <p><strong>Curso:</strong> {vaga.curso_nome}</p>
 
-        {/* --- Dados Estáticos --- */}
+        {/* ATUALIZADO: Estes dados agora vêm da vaga! */}
         <div className="modal-section">
           <h3>Pré-requisitos</h3>
-          <p>{dadosEstaticos.preRequisitos}</p>
+          {/* Usa o preRequisito da vaga ou um texto padrão */}
+          <p>{vaga.preRequisitos || 'Não especificado.'}</p>
         </div>
 
         <div className="modal-section">
           <h3>Descrição das Atividades</h3>
-          <p>{dadosEstaticos.descricao}</p>
+          {/* Usa a descricao da vaga ou um texto padrão */}
+          <p>{vaga.descricao || 'Não especificado.'}</p>
         </div>
 
-        {/* --- Botão --- */}
         <button 
           className="btn btn-primary btn-full" 
           style={{marginTop: '20px'}}
