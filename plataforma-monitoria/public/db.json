@@ -7,34 +7,34 @@
         {
           "nomeDisciplina": "Algoritmos e Estruturas de Dados",
           "professorResponsavel": "Dr. Carlos Silva",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
+          "preRequisitos": "CR > 7.0, Aprovado em Lógica de Programação.",
           "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
           "candidatos": [
-            { "id": 1, "nome": "Ana Souza", "cr": 8.5, "historico_url": "#" },
-            { "id": 2, "nome": "Bruno Lima", "cr": 7.8, "historico_url": "#" },
-            { "id": 3, "nome": "Carla Dias", "cr": 9.1, "historico_url": "#" }
+            { "id": 1, "nome": "Ana Souza", "cr": 8.5, "historico_url": "#", "status": "Aprovado" },
+            { "id": 2, "nome": "Bruno Norton", "cr": 7.8, "historico_url": "#", "status": "Em Análise" },
+            { "id": 3, "nome": "Carla Dias", "cr": 9.1, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
           "nomeDisciplina": "Banco de Dados",
           "professorResponsavel": "Dra. Maria Santos",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "CR > 7.0, Aprovado em Algoritmos.",
+          "descricao": "Manutenção e consulta de bancos de dados relacionais.",
           "candidatos": [
-            { "id": 4, "nome": "Daniel Moreira", "cr": 8.2, "historico_url": "#" },
-            { "id": 5, "nome": "Elisa Fernandes", "cr": 9.0, "historico_url": "#" },
-            { "id": 6, "nome": "Fábio Guedes", "cr": 7.5, "historico_url": "#" }
+            { "id": 4, "nome": "Daniel Moreira", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
+            { "id": 5, "nome": "Elisa Fernandes", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
+            { "id": 6, "nome": "Fábio Guedes", "cr": 7.5, "historico_url": "#", "status": "Rejeitado" }
           ]
         },
         {
           "nomeDisciplina": "Programação Web",
           "professorResponsavel": "Prof. João Costa",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "HTML, CSS, e Lógica de Programação.",
+          "descricao": "Desenvolvimento de aplicações front-end com React.",
           "candidatos": [
-            { "id": 7, "nome": "Gabriela Alves", "cr": 8.8, "historico_url": "#" },
-            { "id": 8, "nome": "Hugo Martins", "cr": 8.1, "historico_url": "#" },
-            { "id": 9, "nome": "Isabela Rocha", "cr": 7.9, "historico_url": "#" }
+            { "id": 7, "nome": "Gabriela Alves", "cr": 8.8, "historico_url": "#", "status": "Aprovado" },
+            { "id": 8, "nome": "Bruno Norton", "cr": 8.1, "historico_url": "#", "status": "Aprovado" },
+            { "id": 9, "nome": "Isabela Rocha", "cr": 7.9, "historico_url": "#", "status": "Rejeitado" }
           ]
         }
       ]
@@ -46,34 +46,34 @@
         {
           "nomeDisciplina": "Engenharia de Requisitos",
           "professorResponsavel": "Dr. Pedro Oliveira",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "Aprovado em Introdução à Engenharia de Software.",
+          "descricao": "Levantamento e documentação de requisitos de software.",
           "candidatos": [
-            { "id": 10, "nome": "João Vitor", "cr": 8.3, "historico_url": "#" },
-            { "id": 11, "nome": "Larissa Mendes", "cr": 9.2, "historico_url": "#" },
-            { "id": 12, "nome": "Marcos Paiva", "cr": 7.6, "historico_url": "#" }
+            { "id": 10, "nome": "Bruno Norton", "cr": 8.3, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 11, "nome": "Larissa Mendes", "cr": 9.2, "historico_url": "#", "status": "Aprovado" },
+            { "id": 12, "nome": "Marcos Paiva", "cr": 7.6, "historico_url": "#", "status": "Em Análise" }
           ]
         },
         {
           "nomeDisciplina": "Testes de Software",
           "professorResponsavel": "Dra. Ana Ferreira",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "Aprovado em Programação Orientada a Objetos.",
+          "descricao": "Criação e execução de planos de teste e testes automatizados.",
           "candidatos": [
-            { "id": 13, "nome": "Natália Costa", "cr": 8.9, "historico_url": "#" },
-            { "id": 14, "nome": "Otávio Bernardes", "cr": 8.0, "historico_url": "#" },
-            { "id": 15, "nome": "Patrícia Gomes", "cr": 9.5, "historico_url": "#" }
+            { "id": 13, "nome": "Natália Costa", "cr": 8.9, "historico_url": "#", "status": "Aprovado" },
+            { "id": 14, "nome": "Otávio Bernardes", "cr": 8.0, "historico_url": "#", "status": "Em Análise" },
+            { "id": 15, "nome": "Patrícia Gomes", "cr": 9.5, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
           "nomeDisciplina": "Arquitetura de Sistemas",
           "professorResponsavel": "Prof. Lucas Mendes",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "CR > 8.0, Aprovado em Engenharia de Software.",
+          "descricao": "Definição de padrões de arquitetura e micro-serviços.",
           "candidatos": [
-            { "id": 16, "nome": "Rafael Pereira", "cr": 7.7, "historico_url": "#" },
-            { "id": 17, "nome": "Sabrina Nogueira", "cr": 8.6, "historico_url": "#" },
-            { "id": 18, "nome": "Tiago Leal", "cr": 9.3, "historico_url": "#" }
+            { "id": 16, "nome": "Rafael Pereira", "cr": 7.7, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 17, "nome": "Sabrina Nogueira", "cr": 8.6, "historico_url": "#", "status": "Aprovado" },
+            { "id": 18, "nome": "Tiago Leal", "cr": 9.3, "historico_url": "#", "status": "Em Análise" }
           ]
         }
       ]
@@ -85,34 +85,34 @@
         {
           "nomeDisciplina": "Desenvolvimento Mobile",
           "professorResponsavel": "Dr. Rafael Gomes",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "Lógica de Programação e Java/Kotlin ou Swift.",
+          "descricao": "Desenvolver aplicativos móveis nativos e híbridos.",
           "candidatos": [
-            { "id": 19, "nome": "Ulisses Ramos", "cr": 8.4, "historico_url": "#" },
-            { "id": 20, "nome": "Vitória Bastos", "cr": 9.0, "historico_url": "#" },
-            { "id": 21, "nome": "Wagner Cruz", "cr": 7.9, "historico_url": "#" }
+            { "id": 19, "nome": "Ulisses Ramos", "cr": 8.4, "historico_url": "#", "status": "Aprovado" },
+            { "id": 20, "nome": "Vitória Bastos", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
+            { "id": 21, "nome": "Wagner Cruz", "cr": 7.9, "historico_url": "#", "status": "Em Análise" }
           ]
         },
         {
           "nomeDisciplina": "API REST",
           "professorResponsavel": "Dra. Juliana Rocha",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "Conhecimento em Banco de Dados e Programação Web.",
+          "descricao": "Construção de APIs RESTful seguras e escaláveis.",
           "candidatos": [
-            { "id": 22, "nome": "Yasmin Faria", "cr": 9.1, "historico_url": "#" },
-            { "id": 23, "nome": "Zeca Monteiro", "cr": 8.2, "historico_url": "#" },
-            { "id": 24, "nome": "Amanda Borges", "cr": 8.7, "historico_url": "#" }
+            { "id": 22, "nome": "Yasmin Faria", "cr": 9.1, "historico_url": "#", "status": "Aprovado" },
+            { "id": 23, "nome": "Zeca Monteiro", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
+            { "id": 24, "nome": "Amanda Borges", "cr": 8.7, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
           "nomeDisciplina": "Cloud Computing",
           "professorResponsavel": "Prof. Marcelo Dias",
-          "preRequisitos": "CR > 7.0, Aprovado na matéria base.",
-          "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
+          "preRequisitos": "Conhecimento básico de redes e sistemas operacionais.",
+          "descricao": "Gerenciamento de infraestrutura em nuvem (AWS/Azure/GCP).",
           "candidatos": [
-            { "id": 25, "nome": "Beatriz Nunes", "cr": 7.8, "historico_url": "#" },
-            { "id": 26, "nome": "Caio Viana", "cr": 8.5, "historico_url": "#" },
-            { "id": 27, "nome": "Diana Matos", "cr": 9.4, "historico_url": "#" }
+            { "id": 25, "nome": "Beatriz Nunes", "cr": 7.8, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 26, "nome": "Caio Viana", "cr": 8.5, "historico_url": "#", "status": "Em Análise" },
+            { "id": 27, "nome": "Diana Matos", "cr": 9.4, "historico_url": "#", "status": "Aprovado" }
           ]
         }
       ]
