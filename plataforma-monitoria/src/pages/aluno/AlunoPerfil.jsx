@@ -1,26 +1,75 @@
-// src/pages/aluno/AlunoPerfil.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// SIMULAÇÃO: Aluno logado
+const LOGGED_IN_ALUNO = "Bruno Norton";
+const API_URL = '/db.json';
 
 export default function AlunoPerfil() {
-  // Criamos um estado para rastrear se estamos no "modo de edição"
+  // Estado para os dados do formulário
+  const [email, setEmail] = useState('');
+  const [curso, setCurso] = useState('');
+  const [matricula, setMatricula] = useState('');
+  const [lattes, setLattes] = useState('');
+  
+  // Estado para o modo de edição
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchAlunoData = async () => {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Falha ao carregar dados.');
+        const data = await response.json();
 
-  // Poderíamos também usar 'useState' para os valores dos inputs,
-  // mas para este formulário, podemos deixar assim por enquanto.
+        // Procura pelo aluno em todas as listas de candidatos
+        let alunoEncontrado = null;
+        for (const vaga of data.Vagas) {
+          for (const disciplina of vaga.disciplinas) {
+            alunoEncontrado = disciplina.candidatos.find(
+              c => c.nome === LOGGED_IN_ALUNO
+            );
+            if (alunoEncontrado) break;
+          }
+          if (alunoEncontrado) break;
+        }
+
+        if (alunoEncontrado) {
+          // ATUALIZADO: Preenche os dados com base na API
+          setCurso(alunoEncontrado.cursando);
+          // Simula e-mail e matrícula
+          setEmail(`${alunoEncontrado.nome.toLowerCase().replace(' ', '.')}${alunoEncontrado.id}@alunos.ibmec.edu.br`);
+          setMatricula(`20250${alunoEncontrado.id}`);
+        } else {
+          // Fallback se o aluno não for encontrado
+          setCurso("Curso não encontrado");
+          setEmail("email@naoencontrado.com");
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchAlunoData();
+  }, []); // Roda apenas uma vez
+
   
   const handleToggleEdit = (e) => {
-    // Impede o envio do formulário (comportamento padrão do botão)
     e.preventDefault(); 
     
     if (isEditing) {
-      // Se estava editando, agora "salva" e desativa o modo de edição
       alert('Perfil salvo com sucesso! (Simulado)');
       setIsEditing(false);
     } else {
-      // Se não estava editando, ativa o modo de edição
       setIsEditing(true);
     }
   };
+
+  if (isLoading) {
+    return <div className="content-section"><p>Carregando perfil...</p></div>;
+  }
 
   return (
     <div className="content-section">
@@ -28,39 +77,38 @@ export default function AlunoPerfil() {
       <form id="perfil-form">
         <div className="input-group">
           <label>Nome Completo</label>
-          {/* Inputs não editáveis vêm do HTML original */}
-          <input type="text" value="Bruno Norton" disabled />
+          <input type="text" value={LOGGED_IN_ALUNO} disabled />
         </div>
         <div className="input-group">
           <label>E-mail</label>
-          <input type="email" value="202503452041@alunos.ibmec.edu.br" disabled />
+          <input type="email" value={email} disabled />
         </div>
         <div className="input-group">
           <label>Curso</label>
-          <input type="text" value="Engenharia de Computação" disabled />
+          {/* ATUALIZADO: Campo dinâmico */}
+          <input type="text" value={curso} disabled />
         </div>
         <div className="input-group">
           <label>Matrícula</label>
-          <input type="text" value="202503452041" disabled />
+          <input type="text" value={matricula} disabled />
         </div>
         <div className="input-group">
           <label>Link do Currículo Lattes</label>
-          {/* Este input usa o 'isEditing' para habilitar/desabilitar */}
           <input 
             type="text" 
             className="profile-input" 
             placeholder="http://lattes.cnpq.br/seu-id" 
-            // A propriedade 'disabled' é o OPOSTO de 'isEditing'
+            value={lattes}
+            onChange={(e) => setLattes(e.target.value)}
             disabled={!isEditing} 
           />
         </div>
         <button 
           type="button" 
           id="btn-toggle-edit" 
-          className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`} // CSS dinâmico
-          onClick={handleToggleEdit} // Lógica React
+          className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`}
+          onClick={handleToggleEdit}
         >
-          {/* Texto dinâmico baseado no estado 'isEditing' */}
           {isEditing ? 'Salvar Alterações' : 'Editar Perfil'}
         </button>
       </form>

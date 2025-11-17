@@ -3,6 +3,7 @@
     {
       "codigoCurso": "CC001",
       "nomeCurso": "Ciência da Computação",
+      "coordenadorNome": "Dra. Ana Ferreira",
       "disciplinas": [
         {
           "nomeDisciplina": "Algoritmos e Estruturas de Dados",
@@ -10,9 +11,9 @@
           "preRequisitos": "CR > 7.0, Aprovado em Lógica de Programação.",
           "descricao": "Auxiliar os alunos com listas de exercícios e plantões de dúvidas semanais.",
           "candidatos": [
-            { "id": 1, "nome": "Ana Souza", "cr": 8.5, "historico_url": "#", "status": "Aprovado" },
-            { "id": 2, "nome": "Bruno Norton", "cr": 7.8, "historico_url": "#", "status": "Em Análise" },
-            { "id": 3, "nome": "Carla Dias", "cr": 9.1, "historico_url": "#", "status": "Aprovado" }
+            { "id": 1, "nome": "Ana Souza", "cursando": "Ciência da Computação", "cr": 8.5, "historico_url": "#", "status": "Aprovado" },
+            { "id": 2, "nome": "Bruno Norton", "cursando": "Engenharia de Software", "cr": 7.8, "historico_url": "#", "status": "Em Análise" },
+            { "id": 3, "nome": "Carla Dias", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 9.1, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
@@ -21,9 +22,9 @@
           "preRequisitos": "CR > 7.0, Aprovado em Algoritmos.",
           "descricao": "Manutenção e consulta de bancos de dados relacionais.",
           "candidatos": [
-            { "id": 4, "nome": "Daniel Moreira", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
-            { "id": 5, "nome": "Elisa Fernandes", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
-            { "id": 6, "nome": "Fábio Guedes", "cr": 7.5, "historico_url": "#", "status": "Rejeitado" }
+            { "id": 4, "nome": "Daniel Moreira", "cursando": "Ciência da Computação", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
+            { "id": 5, "nome": "Elisa Fernandes", "cursando": "Engenharia de Software", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
+            { "id": 6, "nome": "Fábio Guedes", "cursando": "Ciência da Computação", "cr": 7.5, "historico_url": "#", "status": "Rejeitado" }
           ]
         },
         {
@@ -32,9 +33,9 @@
           "preRequisitos": "HTML, CSS, e Lógica de Programação.",
           "descricao": "Desenvolvimento de aplicações front-end com React.",
           "candidatos": [
-            { "id": 7, "nome": "Gabriela Alves", "cr": 8.8, "historico_url": "#", "status": "Aprovado" },
-            { "id": 8, "nome": "Bruno Norton", "cr": 8.1, "historico_url": "#", "status": "Aprovado" },
-            { "id": 9, "nome": "Isabela Rocha", "cr": 7.9, "historico_url": "#", "status": "Rejeitado" }
+            { "id": 7, "nome": "Gabriela Alves", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 8.8, "historico_url": "#", "status": "Aprovado" },
+            { "id": 8, "nome": "Bruno Norton", "cursando": "Engenharia de Software", "cr": 8.1, "historico_url": "#", "status": "Aprovado" },
+            { "id": 9, "nome": "Isabela Rocha", "cursando": "Ciência da Computação", "cr": 7.9, "historico_url": "#", "status": "Rejeitado" }
           ]
         }
       ]
@@ -42,6 +43,7 @@
     {
       "codigoCurso": "ENG002",
       "nomeCurso": "Engenharia de Software",
+      "coordenadorNome": "Dr. Pedro Oliveira",
       "disciplinas": [
         {
           "nomeDisciplina": "Engenharia de Requisitos",
@@ -49,9 +51,9 @@
           "preRequisitos": "Aprovado em Introdução à Engenharia de Software.",
           "descricao": "Levantamento e documentação de requisitos de software.",
           "candidatos": [
-            { "id": 10, "nome": "Bruno Norton", "cr": 8.3, "historico_url": "#", "status": "Rejeitado" },
-            { "id": 11, "nome": "Larissa Mendes", "cr": 9.2, "historico_url": "#", "status": "Aprovado" },
-            { "id": 12, "nome": "Marcos Paiva", "cr": 7.6, "historico_url": "#", "status": "Em Análise" }
+            { "id": 10, "nome": "Bruno Norton", "cursando": "Engenharia de Software", "cr": 8.3, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 11, "nome": "Larissa Mendes", "cursando": "Engenharia de Software", "cr": 9.2, "historico_url": "#", "status": "Aprovado" },
+            { "id": 12, "nome": "Marcos Paiva", "cursando": "Ciência da Computação", "cr": 7.6, "historico_url": "#", "status": "Em Análise" }
           ]
         },
         {
@@ -60,9 +62,9 @@
           "preRequisitos": "Aprovado em Programação Orientada a Objetos.",
           "descricao": "Criação e execução de planos de teste e testes automatizados.",
           "candidatos": [
-            { "id": 13, "nome": "Natália Costa", "cr": 8.9, "historico_url": "#", "status": "Aprovado" },
-            { "id": 14, "nome": "Otávio Bernardes", "cr": 8.0, "historico_url": "#", "status": "Em Análise" },
-            { "id": 15, "nome": "Patrícia Gomes", "cr": 9.5, "historico_url": "#", "status": "Aprovado" }
+            { "id": 13, "nome": "Natália Costa", "cursando": "Engenharia de Software", "cr": 8.9, "historico_url": "#", "status": "Aprovado" },
+            { "id": 14, "nome": "Otávio Bernardes", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 8.0, "historico_url": "#", "status": "Em Análise" },
+            { "id": 15, "nome": "Patrícia Gomes", "cursando": "Ciência da Computação", "cr": 9.5, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
@@ -71,9 +73,9 @@
           "preRequisitos": "CR > 8.0, Aprovado em Engenharia de Software.",
           "descricao": "Definição de padrões de arquitetura e micro-serviços.",
           "candidatos": [
-            { "id": 16, "nome": "Rafael Pereira", "cr": 7.7, "historico_url": "#", "status": "Rejeitado" },
-            { "id": 17, "nome": "Sabrina Nogueira", "cr": 8.6, "historico_url": "#", "status": "Aprovado" },
-            { "id": 18, "nome": "Tiago Leal", "cr": 9.3, "historico_url": "#", "status": "Em Análise" }
+            { "id": 16, "nome": "Rafael Pereira", "cursando": "Engenharia de Software", "cr": 7.7, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 17, "nome": "Sabrina Nogueira", "cursando": "Ciência da Computação", "cr": 8.6, "historico_url": "#", "status": "Aprovado" },
+            { "id": 18, "nome": "Tiago Leal", "cursando": "Engenharia de Software", "cr": 9.3, "historico_url": "#", "status": "Em Análise" }
           ]
         }
       ]
@@ -81,6 +83,7 @@
     {
       "codigoCurso": "ADS003",
       "nomeCurso": "Análise e Desenvolvimento de Sistemas",
+      "coordenadorNome": "Dra. Juliana Rocha",
       "disciplinas": [
         {
           "nomeDisciplina": "Desenvolvimento Mobile",
@@ -88,9 +91,9 @@
           "preRequisitos": "Lógica de Programação e Java/Kotlin ou Swift.",
           "descricao": "Desenvolver aplicativos móveis nativos e híbridos.",
           "candidatos": [
-            { "id": 19, "nome": "Ulisses Ramos", "cr": 8.4, "historico_url": "#", "status": "Aprovado" },
-            { "id": 20, "nome": "Vitória Bastos", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
-            { "id": 21, "nome": "Wagner Cruz", "cr": 7.9, "historico_url": "#", "status": "Em Análise" }
+            { "id": 19, "nome": "Ulisses Ramos", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 8.4, "historico_url": "#", "status": "Aprovado" },
+            { "id": 20, "nome": "Vitória Bastos", "cursando": "Engenharia de Software", "cr": 9.0, "historico_url": "#", "status": "Aprovado" },
+            { "id": 21, "nome": "Wagner Cruz", "cursando": "Ciência da Computação", "cr": 7.9, "historico_url": "#", "status": "Em Análise" }
           ]
         },
         {
@@ -99,9 +102,9 @@
           "preRequisitos": "Conhecimento em Banco de Dados e Programação Web.",
           "descricao": "Construção de APIs RESTful seguras e escaláveis.",
           "candidatos": [
-            { "id": 22, "nome": "Yasmin Faria", "cr": 9.1, "historico_url": "#", "status": "Aprovado" },
-            { "id": 23, "nome": "Zeca Monteiro", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
-            { "id": 24, "nome": "Amanda Borges", "cr": 8.7, "historico_url": "#", "status": "Aprovado" }
+            { "id": 22, "nome": "Yasmin Faria", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 9.1, "historico_url": "#", "status": "Aprovado" },
+            { "id": 23, "nome": "Zeca Monteiro", "cursando": "Ciência da Computação", "cr": 8.2, "historico_url": "#", "status": "Em Análise" },
+            { "id": 24, "nome": "Amanda Borges", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 8.7, "historico_url": "#", "status": "Aprovado" }
           ]
         },
         {
@@ -110,9 +113,9 @@
           "preRequisitos": "Conhecimento básico de redes e sistemas operacionais.",
           "descricao": "Gerenciamento de infraestrutura em nuvem (AWS/Azure/GCP).",
           "candidatos": [
-            { "id": 25, "nome": "Beatriz Nunes", "cr": 7.8, "historico_url": "#", "status": "Rejeitado" },
-            { "id": 26, "nome": "Caio Viana", "cr": 8.5, "historico_url": "#", "status": "Em Análise" },
-            { "id": 27, "nome": "Diana Matos", "cr": 9.4, "historico_url": "#", "status": "Aprovado" }
+            { "id": 25, "nome": "Beatriz Nunes", "cursando": "Engenharia de Software", "cr": 7.8, "historico_url": "#", "status": "Rejeitado" },
+            { "id": 26, "nome": "Caio Viana", "cursando": "Análise e Desenvolvimento de Sistemas", "cr": 8.5, "historico_url": "#", "status": "Em Análise" },
+            { "id": 27, "nome": "Diana Matos", "cursando": "Ciência da Computação", "cr": 9.4, "historico_url": "#", "status": "Aprovado" }
           ]
         }
       ]

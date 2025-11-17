@@ -47,10 +47,9 @@ export default function ProfessorCandidatos() {
     fetchVagas();
   }, []);
 
-  // Simulação de ações (igual ao do Coordenador)
+  // Simulação de ações
   const handleAprovar = (nome) => {
     alert(`Aluno ${nome} aprovado! (Simulado)`);
-    // Aqui você poderia adicionar uma lógica para remover o aluno da lista
   };
   
   const handleRejeitar = (nome) => {
@@ -72,11 +71,12 @@ export default function ProfessorCandidatos() {
           <div key={vaga.nomeDisciplina} style={{ marginTop: '30px' }}>
             <h3>Vaga: {vaga.nomeDisciplina}</h3>
             
-            {/* Tabela de candidatos (baseada no GerenciarCandidatosModal) */}
             <table className="tabela">
               <thead>
                 <tr>
                   <th>Nome do Aluno</th>
+                  {/* ATUALIZADO: Nova coluna */}
+                  <th>Curso do Aluno</th>
                   <th>CR</th>
                   <th>Histórico</th>
                   <th>Ações</th>
@@ -85,12 +85,14 @@ export default function ProfessorCandidatos() {
               <tbody>
                 {vaga.candidatos.length === 0 ? (
                   <tr>
-                    <td colSpan="4">Nenhum candidato inscrito para esta vaga.</td>
+                    <td colSpan="5">Nenhum candidato inscrito para esta vaga.</td>
                   </tr>
                 ) : (
                   vaga.candidatos.map(candidato => (
                     <tr key={candidato.id}>
                       <td>{candidato.nome}</td>
+                      {/* ATUALIZADO: Novo campo 'cursando' */}
+                      <td>{candidato.cursando}</td>
                       <td>{candidato.cr}</td>
                       <td>
                         <a href={candidato.historico_url} className="btn btn-secondary">

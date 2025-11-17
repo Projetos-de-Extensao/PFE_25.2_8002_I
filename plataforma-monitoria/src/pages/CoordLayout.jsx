@@ -16,7 +16,7 @@ export default function CoordLayout() {
         <div className="container">
           <h1>Gestão de Monitorias</h1>
           <div className="user-info">
-            <span>Olá, Prof. Carlos!</span>
+            <span>Olá, Dra. Ana Ferreira!</span>
             {/* Link para a página inicial */}
             <Link to="/" className="btn btn-secondary">Sair</Link>
           </div>
