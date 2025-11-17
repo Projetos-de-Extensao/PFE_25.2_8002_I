@@ -1,49 +1,59 @@
-// src/App.jsx
-import { createBrowserRouter, RouterProvider }from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// Importe as páginas que vamos criar
 import IndexPage from "./pages/IndexPage";
 import LoginAlunoPage from "./pages/LoginAlunoPage";
 import LoginCoordPage from "./pages/LoginCoordPage";
-
-// Importe os "Layouts" (páginas com header e sidebar)
 import AlunoLayout from "./pages/AlunoLayout";
 import CoordLayout from "./pages/CoordLayout";
-
-// Importe as "Páginas Internas" do Aluno
 import AlunoVagasAbertas from "./pages/aluno/AlunoVagasAbertas";
 import AlunoCandidaturas from "./pages/aluno/AlunoCandidaturas";
 import AlunoPerfil from "./pages/aluno/AlunoPerfil";
-
-// Importe as "Páginas Internas" do Coordenador
 import CoordDashboard from "./pages/coord/CoordDashboard";
 import CoordVagas from "./pages/coord/CoordVagas";
 
+// NOVAS PÁGINAS DO PROFESSOR
+import LoginProfessorPage from "./pages/LoginProfessorPage"; // Nova
+import ProfessorLayout from "./pages/ProfessorLayout";       // Nova
+import ProfessorCandidatos from "./pages/professor/ProfessorCandidatos"; // Nova
+import ProfessorAlterarVaga from "./pages/professor/ProfessorAlterarVaga"; // Nova
+
 // Definição do "mapa" do site
 const router = createBrowserRouter([
+  // Rotas de Login
   { path: "/", element: <IndexPage /> },
   { path: "/login-aluno", element: <LoginAlunoPage /> },
   { path: "/login-coord", element: <LoginCoordPage /> },
+  { path: "/login-professor", element: <LoginProfessorPage /> }, // Nova Rota
   
-  // Rotas do Aluno (com layout compartilhado)
+  // --- Rotas do Aluno (sem mudança) ---
   {
     path: "/aluno",
-    element: <AlunoLayout />, // O layout com header e sidebar do aluno
+    element: <AlunoLayout />,
     children: [
-      // O path 'vagas' será '/aluno/vagas'
       { path: "vagas", element: <AlunoVagasAbertas /> },
       { path: "candidaturas", element: <AlunoCandidaturas /> },
       { path: "perfil", element: <AlunoPerfil /> },
     ],
   },
   
-  // Rotas do Coordenador (com layout compartilhado)
+  // --- Rotas do Coordenador (sem mudança) ---
   {
     path: "/coord",
-    element: <CoordLayout />, // O layout com header e sidebar do coord
+    element: <CoordLayout />,
     children: [
       { path: "dashboard", element: <CoordDashboard /> },
       { path: "vagas", element: <CoordVagas /> },
+    ],
+  },
+
+  // --- NOVAS ROTAS DO PROFESSOR ---
+  {
+    path: "/professor",
+    element: <ProfessorLayout />, // Layout com a nova sidebar
+    children: [
+      // A rota padrão (ex: /professor) pode redirecionar ou ser a de candidatos
+      { path: "candidatos", element: <ProfessorCandidatos /> },
+      { path: "alterar-vaga", element: <ProfessorAlterarVaga /> },
     ],
   },
 ]);

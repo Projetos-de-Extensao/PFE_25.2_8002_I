@@ -25,11 +25,15 @@ export default function IndexPage() {
         <p>Selecione seu tipo de acesso para continuar.</p>
         
         <Link to="/login-aluno" className="btn btn-role">
-          <span className="role-icon">?</span> Sou Aluno
+          Sou Aluno
+        </Link>
+        
+        <Link to="/login-professor" className="btn btn-role">
+          Sou Professor
         </Link>
         
         <Link to="/login-coord" className="btn btn-role">
-          <span className="role-icon">?</span> Sou Coordenador
+          Sou Coordenador
         </Link>
       </div>
     </div>
