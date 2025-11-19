@@ -367,11 +367,6 @@ title: Sprint Planning
 - Desenvolvimento: Visual Studio Code (React, JSX)
 - API: `fetch` API, `db.json` (Arquivo estático)
 
----
-id: sprint
-title: Sprint Planning
----
-
 # Sprint VII (Multi-User Simulation & Professor Role)
 
 > 13/11/2025 à 20/11/2025
