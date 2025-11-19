@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContext'; // <-- Importe o contexto
 import CoordGerenciarModal from '../../components/CoordGerenciarModal';
 
 const API_URL = '/db.json';
 const PRAZO_ESTATICO = '30/11/2025';
 
-// ATUALIZADO: Re-introduzindo a simulação de login do Coordenador
-const LOGGED_IN_COORDENADOR = "Dra. Ana Ferreira";
-
 export default function CoordVagas() {
-  // ATUALIZADO: Renomeado para 'minhasVagas' para clareza
+  const { user } = useAuth(); // <-- Pega o coordenador logado
   const [minhasVagas, setMinhasVagas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,18 +15,19 @@ export default function CoordVagas() {
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
 
   useEffect(() => {
+    if (!user) return;
+
     const fetchVagas = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Falha ao carregar dados.');
         const data = await response.json();
         
-        // ATUALIZADO: Filtra os cursos que este coordenador gerencia
+        // ATUALIZADO: Filtra usando user.nome
         const meusCursos = (data.Vagas || []).filter(
-          curso => curso.coordenadorNome === LOGGED_IN_COORDENADOR
+          curso => curso.coordenadorNome === user.nome
         );
 
-        // "Achata" todas as disciplinas APENAS dos cursos filtrados
         const vagasProcessadas = meusCursos.flatMap(curso => 
           curso.disciplinas.map(disciplina => ({
             id: `${curso.codigoCurso}-${disciplina.nomeDisciplina}`,
@@ -47,7 +46,7 @@ export default function CoordVagas() {
     };
 
     fetchVagas();
-  }, []);
+  }, [user]);
 
   const handleOpenModal = (vaga) => {
     setVagaSelecionada(vaga);
@@ -66,8 +65,7 @@ export default function CoordVagas() {
     <>
       <div className="content-section">
         <h2>Vagas Criadas</h2>
-        {/* ATUALIZADO: Mostra o contexto do coordenador logado */}
-        <p>Estas são as vagas para os cursos que você coordena (<strong>{LOGGED_IN_COORDENADOR}</strong>).</p>
+        <p>Estas são as vagas para os cursos que você coordena (<strong>{user?.nome}</strong>).</p>
 
         <table className="tabela">
           <thead>
@@ -81,7 +79,6 @@ export default function CoordVagas() {
             </tr>
           </thead>
           <tbody>
-            {/* ATUALIZADO: Renderiza 'minhasVagas' (filtradas) */}
             {minhasVagas.length === 0 ? (
               <tr>
                 <td colSpan="6">Nenhuma vaga encontrada para os seus cursos.</td>

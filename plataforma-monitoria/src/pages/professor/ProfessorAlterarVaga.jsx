@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContext'; // <-- Importe o contexto
 
-// Assumindo o mesmo professor logado
-const LOGGED_IN_PROFESSOR = "Dr. Carlos Silva";
 const API_URL = '/db.json';
 
 export default function ProfessorAlterarVaga() {
+  const { user } = useAuth(); // <-- Pega o professor logado
   const [minhasVagas, setMinhasVagas] = useState([]);
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
   
-  // Estados para os campos do formulário
   const [preRequisitos, setPreRequisitos] = useState('');
   const [descricao, setDescricao] = useState('');
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 1. Busca todas as vagas do professor
   useEffect(() => {
+    if (!user) return;
+
     const fetchVagas = async () => {
       try {
         const response = await fetch(API_URL);
@@ -27,13 +27,14 @@ export default function ProfessorAlterarVaga() {
         const todasDisciplinas = cursos.flatMap(curso => 
           curso.disciplinas.map(disc => ({ ...disc, id: `${curso.codigoCurso}-${disc.nomeDisciplina}` }))
         );
+        
+        // ATUALIZADO: Filtra usando user.nome
         const vagasDoProfessor = todasDisciplinas.filter(
-          disciplina => disciplina.professorResponsavel === LOGGED_IN_PROFESSOR
+          disciplina => disciplina.professorResponsavel === user.nome
         );
         
         setMinhasVagas(vagasDoProfessor);
         
-        // Se o professor tiver vagas, seleciona a primeira por padrão
         if (vagasDoProfessor.length > 0) {
           handleVagaChange(vagasDoProfessor[0].id, vagasDoProfessor);
         }
@@ -45,9 +46,8 @@ export default function ProfessorAlterarVaga() {
       }
     };
     fetchVagas();
-  }, []);
+  }, [user]); // Dependência do user
 
-  // 2. Atualiza o formulário quando o usuário troca a vaga no <select>
   const handleVagaChange = (vagaId, vagas) => {
     const vagasSource = vagas || minhasVagas;
     const vaga = vagasSource.find(v => v.id === vagaId);
@@ -59,7 +59,6 @@ export default function ProfessorAlterarVaga() {
     }
   };
 
-  // 3. Simula o salvamento
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Vaga "${vagaSelecionada.nomeDisciplina}" atualizada com sucesso! (Simulado)`);
@@ -76,7 +75,6 @@ export default function ProfessorAlterarVaga() {
         <p>Você não tem nenhuma vaga de monitoria associada no momento.</p>
       ) : (
         <form onSubmit={handleSubmit}>
-          {/* Seletor de Vaga */}
           <div className="input-group">
             <label htmlFor="vaga-select">Selecione a Vaga</label>
             <select 
@@ -92,7 +90,6 @@ export default function ProfessorAlterarVaga() {
             </select>
           </div>
 
-          {/* Campos Editáveis */}
           <div className="input-group">
             <label htmlFor="vaga-requisitos">Pré-requisitos</label>
             <textarea 
@@ -100,7 +97,7 @@ export default function ProfessorAlterarVaga() {
               rows="4" 
               value={preRequisitos}
               onChange={(e) => setPreRequisitos(e.target.value)}
-              className="profile-input" // Reutilizando a classe
+              className="profile-input"
             />
           </div>
 
