@@ -57,7 +57,10 @@ export default function LoginAlunoPage() {
     <div className="login-container">
       <div className="logo">
          {/* Substitua pela sua tag <img> se preferir */}
-         <span className="logo-placeholder">Monitoria Ibmec</span>
+          <img 
+          src="/ibmecmonitoriaslogo.jpg"
+          alt="Logo Ibmec Monitorias" 
+          />
       </div>
 
       <form id="login-aluno-form" className="form-card" onSubmit={handleLogin}>

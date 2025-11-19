@@ -41,7 +41,10 @@ export default function LoginCoordPage() {
   return (
     <div className="login-container">
       <div className="logo">
-         <span className="logo-placeholder">Monitoria Ibmec</span>
+          <img 
+          src="/ibmecmonitoriaslogo.jpg"
+          alt="Logo Ibmec Monitorias" 
+          />
       </div>
 
       <form className="form-card" onSubmit={handleLogin}>
