@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext'; // Importa o contexto
+import { useAuth } from '../contexts/AuthContext';
 
 const API_URL = '/db.json';
 
 export default function LoginAlunoPage() {
-  const { login } = useAuth(); // Pega a função de login
+  const { login } = useAuth();
   const navigate = useNavigate();
-  const [inputLogin, setInputLogin] = useState(''); // Pode ser nome ou email
+  const [inputLogin, setInputLogin] = useState('');
   
   useEffect(() => {
     document.body.className = 'login-body';
@@ -23,24 +23,23 @@ export default function LoginAlunoPage() {
       
       let alunoEncontrado = null;
       
-      // Varre todas as vagas e disciplinas para procurar o aluno
+      // Varre todas as disciplinas para encontrar o candidato
       const todasDisciplinas = (data.Vagas || []).flatMap(v => v.disciplinas);
       
       for (const disciplina of todasDisciplinas) {
         const candidato = disciplina.candidatos?.find(c => 
-          // Verifica se o input bate com o NOME ou com o EMAIL (case insensitive)
+          // Verifica Nome OU Email (case insensitive)
           c.nome.toLowerCase() === inputLogin.toLowerCase() ||
-          c.email.toLowerCase() === inputLogin.toLowerCase()
+          (c.email && c.email.toLowerCase() === inputLogin.toLowerCase())
         );
         
         if (candidato) {
           alunoEncontrado = candidato;
-          break; // Paramos de procurar se acharmos
+          break;
         }
       }
 
       if (alunoEncontrado) {
-        // SUCESSO: Loga o usuário no contexto global
         login({ nome: alunoEncontrado.nome, role: 'aluno' });
         alert(`Bem-vindo, ${alunoEncontrado.nome}!`);
         navigate('/aluno/vagas');
@@ -56,22 +55,20 @@ export default function LoginAlunoPage() {
   return (
     <div className="login-container">
       <div className="logo">
-         {/* Substitua pela sua tag <img> se preferir */}
-          <img 
+         <img 
           src="/ibmecmonitoriaslogo.jpg"
           alt="Logo Ibmec Monitorias" 
           />
       </div>
 
-      <form id="login-aluno-form" className="form-card" onSubmit={handleLogin}>
+      <form className="form-card" onSubmit={handleLogin}>
         <h2>Login do Aluno</h2>
         <p>Use seu e-mail institucional ou nome completo.</p>
         
         <div className="input-group">
-          <label htmlFor="login">E-mail ou Nome</label>
+          <label>E-mail ou Nome</label>
           <input 
             type="text" 
-            id="login" 
             placeholder="Ex: bruno.norton@alunos.ibmec.edu.br" 
             required 
             value={inputLogin}
@@ -80,8 +77,8 @@ export default function LoginAlunoPage() {
         </div>
         
         <div className="input-group">
-          <label htmlFor="senha">Senha</label>
-          <input type="password" id="senha" placeholder="••••••" required />
+          <label>Senha</label>
+          <input type="password" placeholder="••••••" required />
         </div>
         
         <button type="submit" className="btn btn-primary">Entrar</button>

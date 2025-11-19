@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
-// ASSINATURA DE ALUNO:
-// Para simular qual aluno está logado, vamos definir um nome fixo.
-// Este nome DEVE bater com um "nome" de candidato no db.json
-// (Seu header diz "Bruno Norton", mas usei "Bruno Norton" que estava no db.json)
-const LOGGED_IN_ALUNO = "Bruno Norton";
+import { useAuth } from '../../contexts/AuthContext'; // Importe o contexto
 
 const API_URL = '/db.json';
 
 export default function AlunoCandidaturas() {
+  const { user } = useAuth(); // Pega o usuário logado
   const [minhasCandidaturas, setMinhasCandidaturas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!user) return; // Aguarda o usuário
+
     const fetchCandidaturas = async () => {
       try {
         const response = await fetch(API_URL);
@@ -23,24 +21,17 @@ export default function AlunoCandidaturas() {
         const cursos = data.Vagas || [];
         const candidaturasEncontradas = [];
 
-        // Itera por todos os cursos
         for (const curso of cursos) {
-          // Itera por todas as disciplinas desse curso
           for (const disciplina of curso.disciplinas) {
-            // Itera por todos os candidatos dessa disciplina
-            for (const candidato of disciplina.candidatos) {
-              
-              // Se o candidato for o nosso aluno logado...
-              if (candidato.nome === LOGGED_IN_ALUNO) {
-                // ...adicionamos a vaga e o status dele à nossa lista
-                candidaturasEncontradas.push({
-                  id: `${curso.codigoCurso}-${disciplina.nomeDisciplina}`,
-                  nomeDisciplina: disciplina.nomeDisciplina,
-                  status: candidato.status // <-- O status vem do db.json!
-                });
-                // Para de procurar nesta disciplina (não precisa checar outros candidatos)
-                break; 
-              }
+            // Procura se o aluno logado está na lista de candidatos desta disciplina
+            const candidato = disciplina.candidatos?.find(c => c.nome === user.nome);
+            
+            if (candidato) {
+              candidaturasEncontradas.push({
+                id: `${curso.codigoCurso}-${disciplina.nomeDisciplina}`,
+                nomeDisciplina: disciplina.nomeDisciplina,
+                status: candidato.status 
+              });
             }
           }
         }
@@ -55,19 +46,15 @@ export default function AlunoCandidaturas() {
     };
 
     fetchCandidaturas();
-  }, []);
+  }, [user]); // Roda novamente se o usuário mudar
 
-  // Função helper para retornar a classe CSS correta para o status
+  // Helper para CSS
   const getStatusClass = (status) => {
     switch (status) {
-      case 'Aprovado':
-        return 'status-aprovado';
-      case 'Rejeitado':
-        return 'status-rejeitado';
-      case 'Em Análise':
-        return 'status-analise';
-      default:
-        return '';
+      case 'Aprovado': return 'status-aprovado';
+      case 'Rejeitado': return 'status-rejeitado';
+      case 'Em Análise': return 'status-analise';
+      default: return '';
     }
   };
 
@@ -77,7 +64,7 @@ export default function AlunoCandidaturas() {
   return (
     <div className="content-section">
       <h2>Minhas Candidaturas</h2>
-      <p>Mostrando candidaturas para o aluno: <strong>{LOGGED_IN_ALUNO}</strong></p>
+      <p>Mostrando candidaturas para: <strong>{user?.nome}</strong></p>
       
       <table className="tabela">
         <thead>
