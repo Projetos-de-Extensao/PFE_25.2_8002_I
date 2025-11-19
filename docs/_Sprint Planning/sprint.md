@@ -359,7 +359,6 @@ title: Sprint Planning
 
 #### O que podemos melhorar?
 
-- A próxima Sprint deve focar em substituir o `fetch` estático do `db.json` pelo `json-server` (ou uma ferramenta similar) para permitir a simulação de requisições POST/PUT/DELETE, fazendo com que a candidatura seja "salva".
 - Definir uma "interface" (um contrato de dados) para o que o front-end espera, para evitar refatorações caso a API mude novamente.
 
 #### Ferramentas utilizadas
@@ -367,3 +366,69 @@ title: Sprint Planning
 - Reunião: Google Meet
 - Desenvolvimento: Visual Studio Code (React, JSX)
 - API: `fetch` API, `db.json` (Arquivo estático)
+
+---
+id: sprint
+title: Sprint Planning
+---
+
+# Sprint VII (Multi-User Simulation & Professor Role)
+
+> 13/11/2025 à 20/11/2025
+
+## Planejamento de Interação
+
+* *Objetivo da Sprint:* Expandir a plataforma para suportar múltiplos perfis de usuário (Aluno, Professor, Coordenador) com dados e permissões distintas. Criar o fluxo completo do Professor e implementar um sistema de login simulado que personaliza a experiência com base no usuário logado, utilizando dados dinâmicos do db.json.
+
+* *Presentes na reunião:*
+|Nome|
+|----|
+|Bruno Norton|
+|Gabriel Pereira|
+|Iago Viana|
+|Pedro dos Santos|
+
+### Lista de Tarefas da Interação
+
+|Tarefa|Responsabilidade|
+|---|----|
+| Expandir o db.json para incluir dados detalhados de candidatos dentro das disciplinas e adicionar campos de email para todos os usuários.| Gabriel|
+| Criar o AuthContext.jsx para gerenciar o estado global de autenticação (Login/Logout) e persistir o usuário no localStorage.| Bruno|
+| Implementar as novas páginas e rotas do Professor: LoginProfessorPage, ProfessorLayout, ProfessorCandidatos e ProfessorAlterarVaga.| Iago|
+| Refatorar as páginas de Login (Aluno, Professor, Coordenador) para validar as credenciais (Nome ou Email) contra o db.json e atualizar o contexto global.| Pedro|
+| Atualizar as páginas do Aluno (Candidaturas, Perfil) para exibir dados dinâmicos baseados no aluno logado (ex: "Bruno Norton" vs "Ana Souza").| Bruno|
+| Refatorar o painel do Coordenador (CoordDashboard, CoordVagas) para filtrar cursos pelo coordenador logado e transformar a gestão de vagas em visualização (somente leitura).| Gabriel|
+| Implementar a lógica de abas interativas no Dashboard do Coordenador para detalhar as estatísticas (Vagas, Candidatos, Professores).| Todos|
+
+### Sprint Retrospective/Review Meeting
+
+#### Dúvidas da Interação
+
+- Como lidar com usuários que têm o mesmo nome? (Decisão: Por enquanto, o sistema busca pela primeira ocorrência, mas o campo email foi adicionado para futura validação única).
+- O AuthContext é suficiente para "proteger" rotas? (Sim, para o escopo de simulação, ele cumpre o papel de persistir a sessão).
+
+#### Riscos Encontrados
+
+- A complexidade do db.json aumentou significativamente com o aninhamento de dados (Vagas -> Disciplinas -> Candidatos), o que exigiu cuidado extra na manipulação dos arrays (flatMap).
+- A refatoração simultânea de múltiplas páginas para usar o useAuth() gerou alguns bugs temporários de "variável não definida", rapidamente corrigidos.
+
+#### Pontos Positivos
+
+- A simulação de múltiplos usuários ficou excelente. É possível testar cenários reais trocando de login (ex: ver as vagas do Dr. Carlos vs Dra. Maria).
+- A interface do Professor ficou intuitiva e consistente com o resto da plataforma.
+- O uso do AuthContext limpou muito o código, removendo as constantes de "usuário hardcoded" espalhadas pelos arquivos.
+- A transformação do Dashboard do Coordenador em abas interativas melhorou muito a usabilidade.
+
+#### Pontos Negativos
+
+- A validação de login ainda é uma simulação "client-side" que lê todo o banco de dados, o que não seria seguro em produção, mas funciona perfeitamente para o protótipo.
+
+#### O que podemos melhorar?
+
+- Adicionar feedback visual de erro nos formulários de login (ex: borda vermelha no input) em vez de apenas alert().
+
+#### Ferramentas utilizadas
+
+- Reunião: Google Meet
+- Desenvolvimento: Visual Studio Code (React, JSX)
+- Gestão de Estado: React Context API (useContext)
