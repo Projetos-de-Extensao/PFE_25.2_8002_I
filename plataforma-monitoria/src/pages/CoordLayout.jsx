@@ -1,14 +1,22 @@
-// src/pages/CoordLayout.jsx
 import React, { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import CriarVagaModal from '../components/CriarVagaModal'; // Vamos criar este modal
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // Importamos o contexto
+import CriarVagaModal from '../components/CriarVagaModal'; // Mantemos o modal de criação
 
 export default function CoordLayout() {
+  const { user, logout } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const location = useLocation(); // Hook para saber a rota atual
+  
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Função para verificar se o link está ativo
   const isActive = (path) => location.pathname === path;
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    navigate('/');
+  };
 
   return (
     <>
@@ -16,9 +24,9 @@ export default function CoordLayout() {
         <div className="container">
           <h1>Gestão de Monitorias</h1>
           <div className="user-info">
-            <span>Olá, Dra. Ana Ferreira!</span>
-            {/* Link para a página inicial */}
-            <Link to="/" className="btn btn-secondary">Sair</Link>
+            {/* Nome dinâmico do coordenador */}
+            <span>Olá, {user ? user.nome : 'Coordenador'}!</span>
+            <a href="#" onClick={handleLogout} className="btn btn-secondary">Sair</a>
           </div>
         </div>
       </header>
@@ -46,19 +54,18 @@ export default function CoordLayout() {
           <button 
             id="show-criar-vaga" 
             className="btn btn-primary btn-full"
-            onClick={() => setIsModalOpen(true)} // Lógica React para abrir modal
+            onClick={() => setIsModalOpen(true)}
           >
             Criar Nova Vaga
           </button>
         </nav>
 
-        {/* Outlet é onde o conteúdo da página (filho) será renderizado */}
         <main id="content-area">
           <Outlet />
         </main>
       </div>
 
-      {/* Renderização condicional do Modal */}
+      {/* Renderização condicional do Modal de Criar Vaga */}
       {isModalOpen && <CriarVagaModal onClose={() => setIsModalOpen(false)} />}
     </>
   );

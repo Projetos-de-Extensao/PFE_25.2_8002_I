@@ -1,15 +1,19 @@
-// src/pages/AlunoLayout.jsx
 import React from 'react';
-// Importa os componentes de roteamento
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // Importamos o contexto
 
 export default function AlunoLayout() {
-  // O 'useLocation' nos ajuda a saber qual é a URL atual
-  // para que possamos destacar o link ativo na sidebar.
+  const { user, logout } = useAuth(); // Pegamos o usuário e a função de logout
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Função para verificar se o link deve estar "ativo"
   const isActive = (path) => location.pathname === path;
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout(); // Limpa o usuário do contexto/localStorage
+    navigate('/'); // Manda de volta para a tela inicial
+  };
 
   return (
     <>
@@ -17,10 +21,9 @@ export default function AlunoLayout() {
         <div className="container">
           <h1>Plataforma de Monitoria</h1>
           <div className="user-info">
-            <span>Olá, Bruno Norton!</span>
-            {/* O <Link> do React Router é usado em vez de <a href> 
-                para navegar sem recarregar a página */}
-            <Link to="/" className="btn btn-secondary">Sair</Link>
+            {/* Agora mostra o nome dinâmico do aluno logado */}
+            <span>Olá, {user ? user.nome : 'Aluno'}!</span>
+            <a href="#" onClick={handleLogout} className="btn btn-secondary">Sair</a>
           </div>
         </div>
       </header>
@@ -31,7 +34,6 @@ export default function AlunoLayout() {
             <li>
               <Link 
                 to="/aluno/vagas" 
-                // Define a classe 'active' dinamicamente
                 className={`nav-link ${isActive('/aluno/vagas') ? 'active' : ''}`}
               >
                 Vagas Abertas
@@ -57,9 +59,6 @@ export default function AlunoLayout() {
         </nav>
 
         <main id="content-area">
-          {/* <Outlet> é o espaço reservado onde o React Router
-              vai renderizar o componente "filho" da rota.
-              (Ex: AlunoVagasAbertas, AlunoCandidaturas, etc.) */}
           <Outlet />
         </main>
       </div>

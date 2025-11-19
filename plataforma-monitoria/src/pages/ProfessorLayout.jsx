@@ -1,12 +1,19 @@
 import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // Importamos o contexto
 
 export default function ProfessorLayout() {
+  const { user, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+  
   const isActive = (path) => location.pathname === path;
 
-  // Assume um nome de professor fixo para o "Olá!"
-  const nomeProfessor = "Dr. Carlos Silva"; 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    navigate('/');
+  };
 
   return (
     <>
@@ -14,8 +21,9 @@ export default function ProfessorLayout() {
         <div className="container">
           <h1>Painel do Professor</h1>
           <div className="user-info">
-            <span>Olá, {nomeProfessor}!</span>
-            <Link to="/" className="btn btn-secondary">Sair</Link>
+            {/* Nome dinâmico do professor */}
+            <span>Olá, {user ? user.nome : 'Professor'}!</span>
+            <a href="#" onClick={handleLogout} className="btn btn-secondary">Sair</a>
           </div>
         </div>
       </header>
