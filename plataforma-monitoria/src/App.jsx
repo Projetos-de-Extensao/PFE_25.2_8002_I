@@ -1,31 +1,32 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext"; // <-- Importe o Provider
 
+// Importe as páginas
 import IndexPage from "./pages/IndexPage";
 import LoginAlunoPage from "./pages/LoginAlunoPage";
 import LoginCoordPage from "./pages/LoginCoordPage";
+import LoginProfessorPage from "./pages/LoginProfessorPage";
+
 import AlunoLayout from "./pages/AlunoLayout";
 import CoordLayout from "./pages/CoordLayout";
+import ProfessorLayout from "./pages/ProfessorLayout";
+
 import AlunoVagasAbertas from "./pages/aluno/AlunoVagasAbertas";
 import AlunoCandidaturas from "./pages/aluno/AlunoCandidaturas";
 import AlunoPerfil from "./pages/aluno/AlunoPerfil";
+
 import CoordDashboard from "./pages/coord/CoordDashboard";
 import CoordVagas from "./pages/coord/CoordVagas";
 
-// NOVAS PÁGINAS DO PROFESSOR
-import LoginProfessorPage from "./pages/LoginProfessorPage"; // Nova
-import ProfessorLayout from "./pages/ProfessorLayout";       // Nova
-import ProfessorCandidatos from "./pages/professor/ProfessorCandidatos"; // Nova
-import ProfessorAlterarVaga from "./pages/professor/ProfessorAlterarVaga"; // Nova
+import ProfessorCandidatos from "./pages/professor/ProfessorCandidatos";
+import ProfessorAlterarVaga from "./pages/professor/ProfessorAlterarVaga";
 
-// Definição do "mapa" do site
 const router = createBrowserRouter([
-  // Rotas de Login
   { path: "/", element: <IndexPage /> },
   { path: "/login-aluno", element: <LoginAlunoPage /> },
   { path: "/login-coord", element: <LoginCoordPage /> },
-  { path: "/login-professor", element: <LoginProfessorPage /> }, // Nova Rota
+  { path: "/login-professor", element: <LoginProfessorPage /> },
   
-  // --- Rotas do Aluno (sem mudança) ---
   {
     path: "/aluno",
     element: <AlunoLayout />,
@@ -36,7 +37,6 @@ const router = createBrowserRouter([
     ],
   },
   
-  // --- Rotas do Coordenador (sem mudança) ---
   {
     path: "/coord",
     element: <CoordLayout />,
@@ -46,12 +46,10 @@ const router = createBrowserRouter([
     ],
   },
 
-  // --- NOVAS ROTAS DO PROFESSOR ---
   {
     path: "/professor",
-    element: <ProfessorLayout />, // Layout com a nova sidebar
+    element: <ProfessorLayout />,
     children: [
-      // A rota padrão (ex: /professor) pode redirecionar ou ser a de candidatos
       { path: "candidatos", element: <ProfessorCandidatos /> },
       { path: "alterar-vaga", element: <ProfessorAlterarVaga /> },
     ],
@@ -59,7 +57,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    // Envolvemos o Router com o AuthProvider
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

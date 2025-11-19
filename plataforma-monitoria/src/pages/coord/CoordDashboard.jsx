@@ -123,7 +123,7 @@ export default function CoordDashboard() {
       case 'candidatos':
         return (
           <div className="tab-content fade-in">
-            <h3>Detalhamento: Todos os Candidatos</h3>
+            <h3>Detalhamento: Todas as Candidaturas</h3>
             <table className="tabela">
               <thead>
                 <tr>
@@ -208,7 +208,7 @@ export default function CoordDashboard() {
           style={{ cursor: 'pointer' }}
         >
           <h3>{stats.totalCandidatos}</h3>
-          <p>Total de Candidatos</p>
+          <p>Total de Candidaturas</p>
         </div>
 
         {/* Card 3: Professores */}
