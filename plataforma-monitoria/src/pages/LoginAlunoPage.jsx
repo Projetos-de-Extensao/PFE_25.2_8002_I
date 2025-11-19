@@ -4,10 +4,26 @@ import { useAuth } from '../contexts/AuthContext';
 
 const API_URL = '/db.json';
 
+// Modal simples para Esqueci a Senha
+const ModalEsqueci = ({ onClose }) => (
+  <div id="modal-esqueci" className="modal" style={{ display: 'block' }} onClick={(e) => e.target.className === 'modal' && onClose()}>
+    <div className="modal-content">
+      <span className="close-btn" onClick={onClose}>&times;</span>
+      <form onSubmit={(e) => { e.preventDefault(); alert('Link enviado! (Simulado)'); onClose(); }}>
+        <h2>Recuperar Senha</h2>
+        <p>Enviaremos um link de recuperação para seu e-mail.</p>
+        <div className="input-group"><label>E-mail Institucional</label><input type="email" required /></div>
+        <button type="submit" className="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+);
+
 export default function LoginAlunoPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [inputLogin, setInputLogin] = useState('');
+  const [isEsqueciOpen, setIsEsqueciOpen] = useState(false); // Estado para o modal
   
   useEffect(() => {
     document.body.className = 'login-body';
@@ -16,23 +32,17 @@ export default function LoginAlunoPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
-      
       let alunoEncontrado = null;
-      
-      // Varre todas as disciplinas para encontrar o candidato
       const todasDisciplinas = (data.Vagas || []).flatMap(v => v.disciplinas);
       
       for (const disciplina of todasDisciplinas) {
         const candidato = disciplina.candidatos?.find(c => 
-          // Verifica Nome OU Email (case insensitive)
           c.nome.toLowerCase() === inputLogin.toLowerCase() ||
           (c.email && c.email.toLowerCase() === inputLogin.toLowerCase())
         );
-        
         if (candidato) {
           alunoEncontrado = candidato;
           break;
@@ -44,21 +54,20 @@ export default function LoginAlunoPage() {
         alert(`Bem-vindo, ${alunoEncontrado.nome}!`);
         navigate('/aluno/vagas');
       } else {
-        alert('Aluno não encontrado. Tente "Bruno Norton" ou "bruno.norton@alunos.ibmec.edu.br".');
+        alert('Aluno não encontrado.');
       }
     } catch (error) {
-      console.error(error);
-      alert('Erro ao conectar com o banco de dados.');
+      alert('Erro ao conectar.');
     }
   };
 
   return (
     <div className="login-container">
       <div className="logo">
-         <img 
+        <img 
           src="/ibmecmonitoriaslogo.jpg"
           alt="Logo Ibmec Monitorias" 
-          />
+        />
       </div>
 
       <form className="form-card" onSubmit={handleLogin}>
@@ -83,10 +92,19 @@ export default function LoginAlunoPage() {
         
         <button type="submit" className="btn btn-primary">Entrar</button>
         
+        {/* BOTÃO DE ESQUECI MINHA SENHA VOLTOU AQUI */}
         <div className="form-links" style={{ justifyContent: 'center', marginTop: '15px' }}>
-          <Link to="/">? Voltar</Link>
+           <a href="#" onClick={(e) => { e.preventDefault(); setIsEsqueciOpen(true); }}>
+              Esqueci minha senha
+           </a>
+        </div>
+        <div className="form-links" style={{ justifyContent: 'center', marginTop: '10px' }}>
+          <Link to="/">Voltar</Link>
         </div>
       </form>
+
+      {/* Renderiza o modal se estiver aberto */}
+      {isEsqueciOpen && <ModalEsqueci onClose={() => setIsEsqueciOpen(false)} />}
     </div>
   );
 }
